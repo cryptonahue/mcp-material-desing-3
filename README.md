@@ -2,7 +2,6 @@
 
 A Model Context Protocol (MCP) server that provides tools and resources for generating Material Design 3 components with pure CSS and optional Tailwind CSS integration.
 
-## 🚀 Current Status: PRODUCTION READY
 
 **What this MCP generates:**
 - ✅ **Pure CSS Material Design 3 components** with semantic class names (`md-button`, `md-card`, etc.)
