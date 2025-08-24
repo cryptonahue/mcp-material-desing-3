@@ -1,0 +1,14 @@
+{
+  "$schema": "https://claude.ai/mcp/config-schema.json",
+  "description": "Claude Desktop configuration for Material Design 3 MCP",
+  "mcpServers": {
+    "material-design-3": {
+      "command": "node",
+      "args": ["./dist/index.js"],
+      "cwd": "D:\\repos\\material-design-3-mcp",
+      "env": {
+        "DEBUG": "false"
+      }
+    }
+  }
+}
