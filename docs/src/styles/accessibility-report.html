@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte de Accesibilidad WCAG - Material Design 3</title>
+  <style>
+    body {
+      font-family: 'Roboto', system-ui, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      background-color: #fefbff;
+      color: #1c1b1f;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #6750a4, #625b71);
+      color: white;
+      border-radius: 16px;
+    }
+    .rating {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 500;
+      margin: 10px;
+    }
+    .rating.AAA {
+      background-color: #4caf50;
+      color: white;
+    }
+    .rating.AA {
+      background-color: #ff9800;
+      color: white;
+    }
+    .rating.FAIL {
+      background-color: #f44336;
+      color: white;
+    }
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+    .validation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .validation-card {
+      border: 1px solid #e7e0ec;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .contrast-demo {
+      padding: 12px;
+      border-radius: 8px;
+      margin: 8px 0;
+      text-align: center;
+      font-weight: 500;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .stat {
+      text-align: center;
+      padding: 20px;
+      background: #f3edf7;
+      border-radius: 8px;
+    }
+    .stat-number {
+      font-size: 2em;
+      font-weight: bold;
+      color: #6750a4;
+    }
+    .recommendations {
+      background: #fff8e1;
+      border-left: 4px solid #ff9800;
+      padding: 16px;
+      margin: 16px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>♿ Reporte de Accesibilidad WCAG</h1>
+      <p>Material Design 3 - Sistema Científico</p>
+      <div class="rating AA">
+        Nivel General: WCAG AA
+      </div>
+    </div>
+
+    <!-- Estadísticas Generales -->
+    <div class="section">
+      <h2>📊 Estadísticas Generales</h2>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number">2</div>
+          <div>Combinaciones AAA</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div>Combinaciones AA</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">0</div>
+          <div>Fallos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">5/5</div>
+          <div>Validaciones Específicas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Combinaciones Principales -->
+    <div class="section">
+      <h2>🎨 Combinaciones de Colores Principales</h2>
+      <div class="validation-grid">
+        
+          <div class="validation-card">
+            <h3>Primary/OnPrimary</h3>
+            <div class="rating AA">
+              WCAG AA
+            </div>
+            <p><strong>Ratio de Contraste:</strong> 6.46:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 60%); color: hsl(259, 50%, 0%)">
+              Ejemplo de Texto
+            </div>
+            
+          </div>
+        
+          <div class="validation-card">
+            <h3>Secondary/OnSecondary</h3>
+            <div class="rating AA">
+              WCAG AA
+            </div>
+            <p><strong>Ratio de Contraste:</strong> 6.46:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 60%); color: hsl(259, 50%, 0%)">
+              Ejemplo de Texto
+            </div>
+            
+          </div>
+        
+          <div class="validation-card">
+            <h3>Surface/OnSurface</h3>
+            <div class="rating AAA">
+              WCAG AAA
+            </div>
+            <p><strong>Ratio de Contraste:</strong> 16.31:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 2%); color: hsl(259, 50%, 90%)">
+              Ejemplo de Texto
+            </div>
+            
+          </div>
+        
+          <div class="validation-card">
+            <h3>Background/OnBackground</h3>
+            <div class="rating AAA">
+              WCAG AAA
+            </div>
+            <p><strong>Ratio de Contraste:</strong> 16.72:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 1%); color: hsl(259, 50%, 90%)">
+              Ejemplo de Texto
+            </div>
+            
+          </div>
+        
+          <div class="validation-card">
+            <h3>Error/OnError</h3>
+            <div class="rating AA">
+              WCAG AA
+            </div>
+            <p><strong>Ratio de Contraste:</strong> 6.46:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 60%); color: hsl(259, 50%, 0%)">
+              Ejemplo de Texto
+            </div>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    <!-- Validaciones Específicas -->
+    <div class="section">
+      <h2>🎯 Validaciones Específicas de Componentes</h2>
+      <div class="validation-grid">
+        
+          <div class="validation-card">
+            <h3>Botón Primario</h3>
+            <div class="rating AA">
+              WCAG AA
+            </div>
+            <p><strong>Contexto:</strong> Botón principal de acción</p>
+            <p><strong>Ratio:</strong> 6.46:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 60%); color: hsl(259, 50%, 0%)">
+              Botón Primario
+            </div>
+            
+          </div>
+        
+          <div class="validation-card">
+            <h3>Texto en Superficie</h3>
+            <div class="rating AAA">
+              WCAG AAA
+            </div>
+            <p><strong>Contexto:</strong> Texto principal en tarjetas</p>
+            <p><strong>Ratio:</strong> 16.31:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 2%); color: hsl(259, 50%, 90%)">
+              Texto en Superficie
+            </div>
+            
+          </div>
+        
+          <div class="validation-card">
+            <h3>Texto Secundario</h3>
+            <div class="rating AAA">
+              WCAG AAA
+            </div>
+            <p><strong>Contexto:</strong> Texto de apoyo y descripciones</p>
+            <p><strong>Ratio:</strong> 8.89:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 2%); color: hsl(259, 50%, 70%)">
+              Texto Secundario
+            </div>
+            
+          </div>
+        
+          <div class="validation-card">
+            <h3>Enlaces</h3>
+            <div class="rating AA">
+              WCAG AA
+            </div>
+            <p><strong>Contexto:</strong> Enlaces y elementos interactivos</p>
+            <p><strong>Ratio:</strong> 6.3:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 1%); color: hsl(259, 50%, 60%)">
+              Enlaces
+            </div>
+            
+          </div>
+        
+          <div class="validation-card">
+            <h3>Estados de Error</h3>
+            <div class="rating AA">
+              WCAG AA
+            </div>
+            <p><strong>Contexto:</strong> Mensajes de error críticos</p>
+            <p><strong>Ratio:</strong> 6.46:1</p>
+            <div class="contrast-demo" style="background-color: hsl(259, 50%, 60%); color: hsl(259, 50%, 0%)">
+              Estados de Error
+            </div>
+            
+          </div>
+        
+      </div>
+    </div>
+
+    <!-- Recomendaciones -->
+    
+    <div class="section">
+      <h2>💡 Recomendaciones</h2>
+      <div class="recommendations">
+        <ul>
+          <li>All combinations pass WCAG AA. Consider improving to AAA for enhanced accessibility.</li>
+        </ul>
+      </div>
+    </div>
+    
+
+    <!-- Resumen Técnico -->
+    <div class="section">
+      <h2>🔬 Resumen Técnico</h2>
+      <h3>Metodología de Validación</h3>
+      <ul>
+        <li><strong>Algoritmo HCT:</strong> Utilizado para generar colores científicamente precisos</li>
+        <li><strong>Validación WCAG:</strong> Contraste calculado usando fórmulas oficiales W3C</li>
+        <li><strong>Niveles de Cumplimiento:</strong>
+          <ul>
+            <li>AA: Contraste mínimo 4.5:1 (texto normal), 3:1 (texto grande)</li>
+            <li>AAA: Contraste mínimo 7:1 (texto normal), 4.5:1 (texto grande)</li>
+          </ul>
+        </li>
+        <li><strong>Validación Automática:</strong> Todos los componentes validados automáticamente</li>
+      </ul>
+      
+      <h3>Características del Sistema</h3>
+      <ul>
+        <li>✅ Colores generados con algoritmo HCT científico</li>
+        <li>✅ Validación automática de contraste</li>
+        <li>✅ Cumplimiento WCAG AA</li>
+        <li>✅ Soporte para modo claro y oscuro</li>
+        <li>✅ Tokens de diseño accesibles</li>
+      </ul>
+    </div>
+
+    <div class="section" style="text-align: center; color: #666;">
+      <p>Reporte generado automáticamente por Material Design 3 MCP</p>
+      <p>Fecha: 20/8/2025</p>
+    </div>
+  </div>
+</body>
+</html>

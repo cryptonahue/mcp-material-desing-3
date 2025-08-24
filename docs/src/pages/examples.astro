@@ -1,0 +1,550 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+
+// Ejemplos de casos de uso
+const examples = [
+  {
+    title: "Dashboard de Administración",
+    description: "Panel completo con navegación, tarjetas de métricas y tablas de datos",
+    category: "Layout Completo",
+    difficulty: "Intermedio",
+    components: ["app-bar", "navigation-drawer", "card", "data-table", "fab"],
+    preview: `<div class="min-h-screen bg-gray-50">
+  <!-- App Bar -->
+  <header class="bg-purple-600 text-white p-4 shadow-md">
+    <div class="flex items-center justify-between">
+      <h1 class="text-xl font-semibold">Admin Dashboard</h1>
+      <button class="p-2 rounded-full hover:bg-purple-700">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+  
+  <!-- Content -->
+  <div class="flex">
+    <!-- Sidebar -->
+    <nav class="w-64 bg-white shadow-sm h-screen p-4">
+      <ul class="space-y-2">
+        <li><a href="#" class="block p-3 rounded-lg bg-purple-50 text-purple-700">Dashboard</a></li>
+        <li><a href="#" class="block p-3 rounded-lg hover:bg-gray-50">Usuarios</a></li>
+        <li><a href="#" class="block p-3 rounded-lg hover:bg-gray-50">Productos</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="text-lg font-semibold mb-2">Usuarios Activos</h3>
+          <p class="text-3xl font-bold text-blue-600">1,234</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="text-lg font-semibold mb-2">Ventas Hoy</h3>
+          <p class="text-3xl font-bold text-green-600">$12,345</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="text-lg font-semibold mb-2">Pedidos</h3>
+          <p class="text-3xl font-bold text-orange-600">89</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>`,
+    mcpCall: `await mcp.callTool("create_layout", {
+  type: "page",
+  components: ["app-bar", "navigation-drawer", "card", "data-table"],
+  responsive: true,
+  theme: "purple-theme"
+});`
+  },
+  {
+    title: "Formulario de Registro",
+    description: "Formulario completo con validación y diferentes tipos de campos",
+    category: "Formularios",
+    difficulty: "Básico",
+    components: ["text-field", "select", "checkbox", "button", "card"],
+    preview: `<div class="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">Crear Cuenta</h2>
+  
+  <form class="space-y-4">
+    <!-- Nombre -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
+      <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Tu nombre">
+    </div>
+    
+    <!-- Email -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+      <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="tu@email.com">
+    </div>
+    
+    <!-- País -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">País</label>
+      <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+        <option>Selecciona tu país</option>
+        <option>España</option>
+        <option>México</option>
+        <option>Argentina</option>
+      </select>
+    </div>
+    
+    <!-- Términos -->
+    <div class="flex items-center">
+      <input type="checkbox" class="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
+      <label class="ml-2 text-sm text-gray-700">Acepto los términos y condiciones</label>
+    </div>
+    
+    <!-- Botón -->
+    <button type="submit" class="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors">
+      Crear Cuenta
+    </button>
+  </form>
+</div>`,
+    mcpCall: `// Generar campos individuales
+const nameField = await mcp.callTool("generate_component", {
+  type: "text-field",
+  variant: "outlined",
+  props: {
+    label: "Nombre completo",
+    placeholder: "Tu nombre",
+    required: true
+  }
+});
+
+const submitButton = await mcp.callTool("generate_component", {
+  type: "button",
+  variant: "filled",
+  props: {
+    text: "Crear Cuenta",
+    fullWidth: true
+  }
+});`
+  },
+  {
+    title: "Galería de Productos",
+    description: "Grid responsivo de tarjetas de productos con imágenes y acciones",
+    category: "E-commerce",
+    difficulty: "Intermedio",
+    components: ["card", "button", "chip", "image"],
+    preview: `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Producto 1 -->
+  <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+    <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500"></div>
+    <div class="p-4">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-semibold text-gray-900">Smartphone Pro</h3>
+        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Nuevo</span>
+      </div>
+      <p class="text-gray-600 text-sm mb-3">Último modelo con cámara avanzada</p>
+      <div class="flex items-center justify-between">
+        <span class="text-2xl font-bold text-gray-900">$899</span>
+        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Comprar</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Producto 2 -->
+  <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500"></div>
+    <div class="p-4">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-semibold text-gray-900">Laptop Gaming</h3>
+        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Oferta</span>
+      </div>
+      <p class="text-gray-600 text-sm mb-3">Potencia para gaming y trabajo</p>
+      <div class="flex items-center justify-between">
+        <span class="text-2xl font-bold text-gray-900">$1,299</span>
+        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Comprar</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Producto 3 -->
+  <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+    <div class="h-48 bg-gradient-to-br from-orange-400 to-red-500"></div>
+    <div class="p-4">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-semibold text-gray-900">Auriculares Pro</h3>
+        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Popular</span>
+      </div>
+      <p class="text-gray-600 text-sm mb-3">Sonido de alta calidad</p>
+      <div class="flex items-center justify-between">
+        <span class="text-2xl font-bold text-gray-900">$199</span>
+        <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">Comprar</button>
+      </div>
+    </div>
+  </div>
+</div>`,
+    mcpCall: `// Generar tarjeta de producto
+const productCard = await mcp.callTool("generate_component", {
+  type: "card",
+  variant: "elevated",
+  props: {
+    title: "Smartphone Pro",
+    subtitle: "Último modelo con cámara avanzada",
+    image: "product-image.jpg",
+    actions: [
+      { text: "Comprar", variant: "filled" },
+      { text: "Ver más", variant: "outlined" }
+    ]
+  }
+});`
+  },
+  {
+    title: "Sistema de Notificaciones",
+    description: "Diferentes tipos de alertas y notificaciones con iconos y acciones",
+    category: "Feedback",
+    difficulty: "Básico",
+    components: ["snackbar", "alert", "badge", "icon"],
+    preview: `<div class="space-y-4">
+  <!-- Notificación de éxito -->
+  <div class="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center">
+    <div class="flex-shrink-0">
+      <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+      </svg>
+    </div>
+    <div class="ml-3 flex-1">
+      <p class="text-sm font-medium text-green-800">¡Operación exitosa!</p>
+      <p class="text-sm text-green-700">Los cambios se han guardado correctamente.</p>
+    </div>
+    <button class="ml-3 text-green-600 hover:text-green-800">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Notificación de advertencia -->
+  <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex items-center">
+    <div class="flex-shrink-0">
+      <svg class="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+      </svg>
+    </div>
+    <div class="ml-3 flex-1">
+      <p class="text-sm font-medium text-yellow-800">Atención requerida</p>
+      <p class="text-sm text-yellow-700">Algunos campos requieren revisión antes de continuar.</p>
+    </div>
+  </div>
+  
+  <!-- Notificación de error -->
+  <div class="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center">
+    <div class="flex-shrink-0">
+      <svg class="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+      </svg>
+    </div>
+    <div class="ml-3 flex-1">
+      <p class="text-sm font-medium text-red-800">Error en la operación</p>
+      <p class="text-sm text-red-700">No se pudo completar la acción. Inténtalo de nuevo.</p>
+    </div>
+  </div>
+</div>`,
+    mcpCall: `// Generar diferentes tipos de alertas
+const successAlert = await mcp.callTool("generate_component", {
+  type: "snackbar",
+  variant: "success",
+  props: {
+    message: "¡Operación exitosa!",
+    action: "Deshacer",
+    duration: 4000
+  }
+});
+
+const errorAlert = await mcp.callTool("generate_component", {
+  type: "alert",
+  variant: "error",
+  props: {
+    title: "Error en la operación",
+    message: "No se pudo completar la acción",
+    closable: true
+  }
+});`
+  }
+];
+
+function getDifficultyColor(difficulty: string) {
+  switch (difficulty) {
+    case 'Básico': return 'bg-green-100 text-green-800';
+    case 'Intermedio': return 'bg-yellow-100 text-yellow-800';
+    case 'Avanzado': return 'bg-red-100 text-red-800';
+    default: return 'bg-gray-100 text-gray-800';
+  }
+}
+
+function getCategoryColor(category: string) {
+  switch (category) {
+    case 'Layout Completo': return 'bg-purple-100 text-purple-800';
+    case 'Formularios': return 'bg-blue-100 text-blue-800';
+    case 'E-commerce': return 'bg-green-100 text-green-800';
+    case 'Feedback': return 'bg-orange-100 text-orange-800';
+    default: return 'bg-gray-100 text-gray-800';
+  }
+}
+---
+
+<Layout title="Ejemplos - Material Tailwind MCP">
+  <!-- Header -->
+  <section class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          Ejemplos Prácticos
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Casos de uso reales y demos interactivos para inspirar tus proyectos
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl font-bold text-purple-600">{examples.length}</div>
+          <div class="text-sm text-gray-600">Ejemplos</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-blue-600">4</div>
+          <div class="text-sm text-gray-600">Categorías</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-green-600">25+</div>
+          <div class="text-sm text-gray-600">Componentes</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-orange-600">100%</div>
+          <div class="text-sm text-gray-600">Responsivo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Examples Grid -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-12">
+        {examples.map((example, index) => (
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <!-- Example Header -->
+            <div class="p-6 border-b border-gray-200">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                    {example.title}
+                  </h3>
+                  <p class="text-gray-600 mb-4">
+                    {example.description}
+                  </p>
+                  <div class="flex gap-2 mb-4">
+                    <span class={`px-3 py-1 text-sm font-medium rounded-full ${getCategoryColor(example.category)}`}>
+                      {example.category}
+                    </span>
+                    <span class={`px-3 py-1 text-sm font-medium rounded-full ${getDifficultyColor(example.difficulty)}`}>
+                      {example.difficulty}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Components Used -->
+              <div>
+                <h4 class="text-sm font-semibold text-gray-900 mb-2">Componentes utilizados:</h4>
+                <div class="flex flex-wrap gap-2">
+                  {example.components.map((component) => (
+                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md font-mono">
+                      {component}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <!-- Example Content -->
+            <div class="grid lg:grid-cols-2 gap-0">
+              <!-- Preview -->
+              <div class="p-6">
+                <h4 class="text-lg font-semibold text-gray-900 mb-4">Vista Previa</h4>
+                <div class="bg-gray-50 rounded-lg p-4 overflow-auto max-h-96">
+                  <div set:html={example.preview}></div>
+                </div>
+              </div>
+              
+              <!-- Code -->
+              <div class="p-6 bg-gray-50">
+                <h4 class="text-lg font-semibold text-gray-900 mb-4">Código MCP</h4>
+                <CodeBlock 
+                  code={example.mcpCall}
+                  language="typescript"
+                  showCopy={true}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Playground -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Playground Interactivo
+        </h2>
+        <p class="text-lg text-gray-600">
+          Experimenta con los componentes en tiempo real
+        </p>
+      </div>
+      
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+        <div class="grid lg:grid-cols-2 gap-8">
+          <!-- Controls -->
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-6">
+              Generador de Componentes
+            </h3>
+            
+            <div class="space-y-4">
+              <!-- Component Type -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Componente</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                  <option>button</option>
+                  <option>card</option>
+                  <option>text-field</option>
+                  <option>chip</option>
+                  <option>fab</option>
+                </select>
+              </div>
+              
+              <!-- Variant -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Variante</label>
+                <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                  <option>filled</option>
+                  <option>outlined</option>
+                  <option>text</option>
+                  <option>elevated</option>
+                </select>
+              </div>
+              
+              <!-- Text -->
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Texto</label>
+                <input type="text" value="Mi Componente" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+              </div>
+              
+              <!-- Generate Button -->
+              <button class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors font-medium">
+                Generar Componente
+              </button>
+            </div>
+          </div>
+          
+          <!-- Preview Area -->
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-6">
+              Vista Previa
+            </h3>
+            
+            <div class="bg-gray-50 rounded-lg p-6 min-h-64 flex items-center justify-center">
+              <!-- Sample Component -->
+              <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium">
+                Mi Componente
+              </button>
+            </div>
+            
+            <!-- Generated Code -->
+            <div class="mt-6">
+              <h4 class="text-sm font-semibold text-gray-900 mb-3">Código Generado:</h4>
+              <CodeBlock 
+                code={`<button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium">
+  Mi Componente
+</button>`}
+                language="html"
+                showCopy={true}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Recursos Adicionales
+        </h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Templates -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+            Templates Completos
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Plantillas listas para usar en diferentes tipos de aplicaciones.
+          </p>
+          <a href="#" class="text-purple-600 hover:text-purple-700 text-sm font-medium">
+            Ver templates →
+          </a>
+        </div>
+        
+        <!-- Figma Kit -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+            Kit de Figma
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Componentes de diseño para prototipar antes de implementar.
+          </p>
+          <a href="#" class="text-purple-600 hover:text-purple-700 text-sm font-medium">
+            Descargar kit →
+          </a>
+        </div>
+        
+        <!-- Video Tutorials -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293H15M9 10v4a2 2 0 002 2h2a2 2 0 002-2v-4M9 10V9a2 2 0 012-2h2a2 2 0 012 2v1"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+            Video Tutoriales
+          </h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Aprende paso a paso con nuestros tutoriales en video.
+          </p>
+          <a href="#" class="text-purple-600 hover:text-purple-700 text-sm font-medium">
+            Ver videos →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

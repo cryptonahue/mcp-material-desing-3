@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Material Design 3 Components">
+	<main class="min-h-screen bg-surface p-6">
+		<div class="max-w-7xl mx-auto">
+			<header class="mb-8">
+				<h1 class="text-4xl font-bold text-on-surface mb-4">Material Design 3 Components</h1>
+				<p class="text-lg text-on-surface-variant mb-8">Comprehensive showcase of Material Design 3 components built with Tailwind CSS</p>
+			</header>
+
+			<!-- Component Categories Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				<!-- Buttons -->
+				<Card variant="elevated" class="group hover:shadow-lg transition-shadow duration-300">
+					<a href="/components/buttons" class="block p-6 no-underline">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+								<svg class="w-6 h-6 text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.122 2.122"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="text-xl font-semibold text-on-surface mb-2">Buttons</h3>
+								<p class="text-on-surface-variant">Filled, Outlined, Text, Elevated, Tonal, and FAB buttons</p>
+							</div>
+						</div>
+						<div class="flex gap-2">
+							<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded text-sm">6 variants</span>
+							<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-sm">Interactive</span>
+						</div>
+					</a>
+				</Card>
+
+				<!-- Cards -->
+				<Card variant="elevated" class="group hover:shadow-lg transition-shadow duration-300">
+					<a href="/components/cards" class="block p-6 no-underline">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center mr-4">
+								<svg class="w-6 h-6 text-on-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="text-xl font-semibold text-on-surface mb-2">Cards</h3>
+								<p class="text-on-surface-variant">Elevated, Filled, Outlined cards with various content types</p>
+							</div>
+						</div>
+						<div class="flex gap-2">
+							<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded text-sm">6 types</span>
+							<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-sm">Flexible</span>
+						</div>
+					</a>
+				</Card>
+
+				<!-- Navigation -->
+				<Card variant="elevated" class="group hover:shadow-lg transition-shadow duration-300">
+					<a href="/components/navigation" class="block p-6 no-underline">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-tertiary rounded-lg flex items-center justify-center mr-4">
+								<svg class="w-6 h-6 text-on-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="text-xl font-semibold text-on-surface mb-2">Navigation</h3>
+								<p class="text-on-surface-variant">Tabs, Navigation Rails, and Bottom Navigation</p>
+							</div>
+						</div>
+						<div class="flex gap-2">
+							<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded text-sm">3 types</span>
+							<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-sm">Responsive</span>
+						</div>
+					</a>
+				</Card>
+
+				<!-- Input Components -->
+				<Card variant="elevated" class="group hover:shadow-lg transition-shadow duration-300">
+					<a href="/components/inputs" class="block p-6 no-underline">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+								<svg class="w-6 h-6 text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="text-xl font-semibold text-on-surface mb-2">Input Components</h3>
+								<p class="text-on-surface-variant">Text fields, Chips, Switches, Checkboxes, and Sliders</p>
+							</div>
+						</div>
+						<div class="flex gap-2">
+							<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded text-sm">5 types</span>
+							<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-sm">Form controls</span>
+						</div>
+					</a>
+				</Card>
+
+				<!-- Feedback Components -->
+				<Card variant="elevated" class="group hover:shadow-lg transition-shadow duration-300">
+					<a href="/components/feedback" class="block p-6 no-underline">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center mr-4">
+								<svg class="w-6 h-6 text-on-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="text-xl font-semibold text-on-surface mb-2">Feedback</h3>
+								<p class="text-on-surface-variant">Snackbars, Dialogs, Progress indicators, and Loading states</p>
+							</div>
+						</div>
+						<div class="flex gap-2">
+							<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded text-sm">4 types</span>
+							<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-sm">User feedback</span>
+						</div>
+					</a>
+				</Card>
+
+				<!-- Data Components -->
+				<Card variant="elevated" class="group hover:shadow-lg transition-shadow duration-300">
+					<a href="/components/data" class="block p-6 no-underline">
+						<div class="flex items-center mb-4">
+							<div class="w-12 h-12 bg-tertiary rounded-lg flex items-center justify-center mr-4">
+								<svg class="w-6 h-6 text-on-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+								</svg>
+							</div>
+							<div>
+								<h3 class="text-xl font-semibold text-on-surface mb-2">Data Components</h3>
+								<p class="text-on-surface-variant">Lists, Tables, and Data visualization elements</p>
+							</div>
+						</div>
+						<div class="flex gap-2">
+							<span class="px-2 py-1 bg-primary-container text-on-primary-container rounded text-sm">3 types</span>
+							<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-sm">Data display</span>
+						</div>
+					</a>
+				</Card>
+			</div>
+		</div>
+	</main>
+</Layout>

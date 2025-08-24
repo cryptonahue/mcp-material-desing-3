@@ -1,0 +1,244 @@
+---
+// Material Design 3 Navigation Component
+export interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const isActive = (path: string) => currentPath === path;
+---
+
+<nav id="main-navigation" class="md-surface-container border-b border-md-outline-variant">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center space-x-4">
+        <a href="/" class="md-title-large font-medium text-md-primary">
+          Material Tailwind MCP
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex space-x-2">
+        <a 
+          href="/" 
+          class={`md-nav-item ${
+            isActive('/') ? 'active' : ''
+          }`}
+          data-nav-item
+        >
+          <span class="md-label-large">Inicio</span>
+        </a>
+        <a 
+          href="/components" 
+          class={`md-nav-item ${
+            isActive('/components') ? 'active' : ''
+          }`}
+          data-nav-item
+        >
+          <span class="md-label-large">Componentes</span>
+        </a>
+        <a 
+          href="/tools" 
+          class={`md-nav-item ${
+            isActive('/tools') ? 'active' : ''
+          }`}
+          data-nav-item
+        >
+          <span class="md-label-large">Herramientas</span>
+        </a>
+        <a 
+          href="/showcase" 
+          class={`md-nav-item ${
+            isActive('/showcase') ? 'active' : ''
+          }`}
+          data-nav-item
+        >
+          <span class="md-label-large">🔬 Showcase</span>
+        </a>
+        <a 
+          href="/examples" 
+          class={`md-nav-item ${
+            isActive('/examples') ? 'active' : ''
+          }`}
+          data-nav-item
+        >
+          <span class="md-label-large">Ejemplos</span>
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button" 
+        class="md:hidden md-btn-text p-2 rounded-lg"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Navigation Menu -->
+  <div 
+    id="mobile-menu" 
+    class="md:hidden md-surface-container-high border-t border-md-outline-variant transform transition-all duration-300 ease-in-out opacity-0 -translate-y-2 pointer-events-none"
+    aria-hidden="true"
+  >
+    <div class="px-4 py-4 space-y-2">
+      <a 
+        href="/" 
+        class={`block md-nav-item ${
+          isActive('/') ? 'active' : ''
+        }`}
+        data-nav-item
+      >
+        <span class="md-label-large">Inicio</span>
+      </a>
+      <a 
+        href="/components" 
+        class={`block md-nav-item ${
+          isActive('/components') ? 'active' : ''
+        }`}
+        data-nav-item
+      >
+        <span class="md-label-large">Componentes</span>
+      </a>
+      <a 
+        href="/tools" 
+        class={`block md-nav-item ${
+          isActive('/tools') ? 'active' : ''
+        }`}
+        data-nav-item
+      >
+        <span class="md-label-large">Herramientas</span>
+      </a>
+      <a 
+        href="/examples" 
+        class={`block md-nav-item ${
+          isActive('/examples') ? 'active' : ''
+        }`}
+        data-nav-item
+      >
+        <span class="md-label-large">Ejemplos</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Material Design 3 Navigation Controller
+  class NavigationController {
+    constructor() {
+      this.mobileMenuButton = document.getElementById('mobile-menu-button');
+      this.mobileMenu = document.getElementById('mobile-menu');
+      this.navItems = document.querySelectorAll('[data-nav-item]');
+      this.isMenuOpen = false;
+      
+      this.init();
+    }
+
+    init() {
+      this.setupMobileMenu();
+      this.setupKeyboardNavigation();
+      this.setupClickOutside();
+    }
+
+    setupMobileMenu() {
+      if (!this.mobileMenuButton || !this.mobileMenu) return;
+      
+      this.mobileMenuButton.addEventListener('click', () => {
+        this.toggleMobileMenu();
+      });
+    }
+
+    toggleMobileMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+      
+      if (this.isMenuOpen) {
+        this.openMobileMenu();
+      } else {
+        this.closeMobileMenu();
+      }
+    }
+
+    openMobileMenu() {
+      this.mobileMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+      this.mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      this.mobileMenu.setAttribute('aria-hidden', 'false');
+      this.mobileMenuButton.setAttribute('aria-expanded', 'true');
+      
+      // Change icon to X
+      this.mobileMenuButton.innerHTML = `
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      `;
+    }
+
+    closeMobileMenu() {
+      this.mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+      this.mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+      this.mobileMenu.setAttribute('aria-hidden', 'true');
+      this.mobileMenuButton.setAttribute('aria-expanded', 'false');
+      
+      // Change icon back to hamburger
+      this.mobileMenuButton.innerHTML = `
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      `;
+    }
+
+    setupKeyboardNavigation() {
+      // Handle Escape key to close mobile menu
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isMenuOpen) {
+          this.closeMobileMenu();
+          this.mobileMenuButton.focus();
+        }
+      });
+    }
+
+    setupClickOutside() {
+      document.addEventListener('click', (e) => {
+        if (this.isMenuOpen && 
+            !this.mobileMenu.contains(e.target) && 
+            !this.mobileMenuButton.contains(e.target)) {
+          this.closeMobileMenu();
+        }
+      });
+    }
+  }
+
+  // Initialize navigation when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      new NavigationController();
+    });
+  } else {
+    new NavigationController();
+  }
+</script>
+
+<style>
+  /* Enhanced focus styles for accessibility */
+  [data-nav-item]:focus {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 2px;
+  }
+  
+  /* Smooth transitions for mobile menu */
+  #mobile-menu {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  /* Active state styling */
+  [data-nav-item].active {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+  }
+</style>

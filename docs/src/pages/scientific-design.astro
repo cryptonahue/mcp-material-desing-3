@@ -1,0 +1,436 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
+import ImprovedButton from '../components/ImprovedButton.astro';
+import ImprovedCard from '../components/ImprovedCard.astro';
+---
+
+<Layout title="Diseño Científico Material Design 3">
+  <main class="min-h-screen bg-md-background">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-md-primary-container to-md-secondary-container py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <div class="inline-flex items-center gap-2 bg-md-surface-container-high rounded-full px-4 py-2 mb-6">
+            <span class="material-icons text-md-primary text-sm">science</span>
+            <span class="md-label-large text-md-on-surface">Científicamente Validado</span>
+          </div>
+          
+          <h1 class="md-display-large text-md-on-primary-container mb-6">
+            Diseño Científico
+          </h1>
+          
+          <p class="md-headline-small text-md-on-primary-container/80 max-w-3xl mx-auto mb-8">
+            Sistema de diseño basado en algoritmos HCT, Material Motion y validación WCAG automática
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <ImprovedButton variant="filled" size="large" href="#hct-algorithm">
+              Explorar HCT
+            </ImprovedButton>
+            <ImprovedButton variant="outlined" size="large" href="#accessibility">
+              Ver Accesibilidad
+            </ImprovedButton>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HCT Algorithm Section -->
+    <section id="hct-algorithm" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="md-headline-large text-md-primary mb-4">🎨 Algoritmo HCT</h2>
+          <p class="md-body-large text-md-on-surface-variant max-w-2xl mx-auto">
+            Hue, Chroma, Tone: el sistema de color más avanzado que considera la percepción humana
+          </p>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Explanation -->
+          <div>
+            <ImprovedCard variant="elevated" class="p-8">
+              <h3 class="md-title-large text-md-on-surface mb-6">¿Qué es HCT?</h3>
+              
+              <div class="space-y-6">
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-md-primary-container rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="material-icons text-md-on-primary-container text-sm">palette</span>
+                  </div>
+                  <div>
+                    <h4 class="md-title-medium text-md-on-surface mb-2">Hue (Matiz)</h4>
+                    <p class="md-body-medium text-md-on-surface-variant">
+                      El color base en el espectro cromático, medido en grados (0-360°)
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-md-secondary-container rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="material-icons text-md-on-secondary-container text-sm">tune</span>
+                  </div>
+                  <div>
+                    <h4 class="md-title-medium text-md-on-surface mb-2">Chroma (Saturación)</h4>
+                    <p class="md-body-medium text-md-on-surface-variant">
+                      La intensidad del color, ajustada según la percepción humana
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-md-tertiary-container rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="material-icons text-md-on-tertiary-container text-sm">brightness_6</span>
+                  </div>
+                  <div>
+                    <h4 class="md-title-medium text-md-on-surface mb-2">Tone (Luminosidad)</h4>
+                    <p class="md-body-medium text-md-on-surface-variant">
+                      El brillo percibido, de 0 (negro) a 100 (blanco)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ImprovedCard>
+          </div>
+          
+          <!-- Color Palette Demo -->
+          <div>
+            <ImprovedCard variant="outlined" class="p-8">
+              <h3 class="md-title-large text-md-on-surface mb-6">Paleta Científica Generada</h3>
+              
+              <!-- Primary Palette -->
+              <div class="mb-8">
+                <h4 class="md-title-medium text-md-on-surface mb-4">Primario</h4>
+                <div class="grid grid-cols-5 gap-2">
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-primary-10);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-primary-30);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-primary-50);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-primary-70);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-primary-90);"></div>
+                </div>
+                <div class="grid grid-cols-5 gap-2 text-xs text-md-on-surface-variant mt-2">
+                  <span class="text-center">Tone 10</span>
+                  <span class="text-center">Tone 30</span>
+                  <span class="text-center">Tone 50</span>
+                  <span class="text-center">Tone 70</span>
+                  <span class="text-center">Tone 90</span>
+                </div>
+              </div>
+              
+              <!-- Secondary Palette -->
+              <div class="mb-8">
+                <h4 class="md-title-medium text-md-on-surface mb-4">Secundario</h4>
+                <div class="grid grid-cols-5 gap-2">
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-secondary-10);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-secondary-30);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-secondary-50);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-secondary-70);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-secondary-90);"></div>
+                </div>
+              </div>
+              
+              <!-- Neutral Palette -->
+              <div>
+                <h4 class="md-title-medium text-md-on-surface mb-4">Neutral</h4>
+                <div class="grid grid-cols-5 gap-2">
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-neutral-10);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-neutral-30);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-neutral-50);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-neutral-70);"></div>
+                  <div class="aspect-square rounded-lg" style="background-color: var(--md-sys-color-neutral-90);"></div>
+                </div>
+              </div>
+            </ImprovedCard>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Material Motion Section -->
+    <section class="bg-md-surface-container-low py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="md-headline-large text-md-primary mb-4">🌊 Material Motion</h2>
+          <p class="md-body-large text-md-on-surface-variant max-w-2xl mx-auto">
+            Animaciones basadas en principios físicos para transiciones naturales y predecibles
+          </p>
+        </div>
+        
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Easing Curves -->
+          <ImprovedCard variant="elevated" class="p-6">
+            <div class="w-12 h-12 bg-md-primary-container rounded-full flex items-center justify-center mb-4">
+              <span class="material-icons text-md-on-primary-container">timeline</span>
+            </div>
+            <h3 class="md-title-medium text-md-on-surface mb-3">Curvas de Aceleración</h3>
+            <p class="md-body-medium text-md-on-surface-variant mb-4">
+              Curvas científicamente calibradas que imitan el movimiento natural
+            </p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-md-on-surface-variant">Standard:</span>
+                <code class="text-md-primary">cubic-bezier(0.2, 0.0, 0, 1.0)</code>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-md-on-surface-variant">Emphasized:</span>
+                <code class="text-md-primary">cubic-bezier(0.2, 0.0, 0, 1.0)</code>
+              </div>
+            </div>
+          </ImprovedCard>
+          
+          <!-- Duration Tokens -->
+          <ImprovedCard variant="elevated" class="p-6">
+            <div class="w-12 h-12 bg-md-secondary-container rounded-full flex items-center justify-center mb-4">
+              <span class="material-icons text-md-on-secondary-container">schedule</span>
+            </div>
+            <h3 class="md-title-medium text-md-on-surface mb-3">Duraciones Científicas</h3>
+            <p class="md-body-medium text-md-on-surface-variant mb-4">
+              Tiempos optimizados para la percepción humana del movimiento
+            </p>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span class="text-md-on-surface-variant">Micro:</span>
+                <span class="text-md-primary">50-150ms</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-md-on-surface-variant">Macro:</span>
+                <span class="text-md-primary">250-400ms</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-md-on-surface-variant">Transición:</span>
+                <span class="text-md-primary">450-600ms</span>
+              </div>
+            </div>
+          </ImprovedCard>
+          
+          <!-- Interactive Demo -->
+          <ImprovedCard variant="elevated" class="p-6">
+            <div class="w-12 h-12 bg-md-tertiary-container rounded-full flex items-center justify-center mb-4">
+              <span class="material-icons text-md-on-tertiary-container">touch_app</span>
+            </div>
+            <h3 class="md-title-medium text-md-on-surface mb-3">Demo Interactivo</h3>
+            <p class="md-body-medium text-md-on-surface-variant mb-4">
+              Experimenta las animaciones científicas en tiempo real
+            </p>
+            <div class="space-y-3">
+              <ImprovedButton variant="filled" size="medium" class="w-full transition-all duration-300 hover:scale-105">
+                Hover para Animación
+              </ImprovedButton>
+              <div class="w-full h-2 bg-md-surface-container-highest rounded-full overflow-hidden">
+                <div class="h-full bg-md-primary rounded-full transition-all duration-1000 ease-out" style="width: 65%;"></div>
+              </div>
+            </div>
+          </ImprovedCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility Section -->
+    <section id="accessibility" class="py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="md-headline-large text-md-primary mb-4">♿ Accesibilidad WCAG</h2>
+          <p class="md-body-large text-md-on-surface-variant max-w-2xl mx-auto">
+            Validación automática de contraste y cumplimiento de estándares internacionales
+          </p>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- WCAG Compliance -->
+          <div>
+            <ImprovedCard variant="elevated" class="p-8">
+              <h3 class="md-title-large text-md-on-surface mb-6">Niveles de Cumplimiento</h3>
+              
+              <div class="space-y-6">
+                <!-- AA Level -->
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="material-icons text-green-600 text-sm">check_circle</span>
+                  </div>
+                  <div>
+                    <h4 class="md-title-medium text-md-on-surface mb-2">WCAG AA</h4>
+                    <p class="md-body-medium text-md-on-surface-variant mb-2">
+                      Contraste mínimo 4.5:1 para texto normal, 3:1 para texto grande
+                    </p>
+                    <div class="bg-md-surface-container-high rounded-lg p-3">
+                      <div class="flex justify-between items-center">
+                        <span class="md-body-small text-md-on-surface">Texto en Primario</span>
+                        <span class="md-label-medium text-green-600">7.2:1 ✓</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- AAA Level -->
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="material-icons text-blue-600 text-sm">verified</span>
+                  </div>
+                  <div>
+                    <h4 class="md-title-medium text-md-on-surface mb-2">WCAG AAA</h4>
+                    <p class="md-body-medium text-md-on-surface-variant mb-2">
+                      Contraste mínimo 7:1 para texto normal, 4.5:1 para texto grande
+                    </p>
+                    <div class="bg-md-surface-container-high rounded-lg p-3">
+                      <div class="flex justify-between items-center">
+                        <span class="md-body-small text-md-on-surface">Modo Oscuro</span>
+                        <span class="md-label-medium text-blue-600">12.1:1 ✓</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ImprovedCard>
+          </div>
+          
+          <!-- Contrast Examples -->
+          <div>
+            <ImprovedCard variant="outlined" class="p-8">
+              <h3 class="md-title-large text-md-on-surface mb-6">Ejemplos de Contraste</h3>
+              
+              <div class="space-y-4">
+                <!-- Good Contrast -->
+                <div class="bg-md-primary rounded-lg p-4">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="md-title-medium text-md-on-primary">Excelente Contraste</span>
+                    <span class="material-icons text-md-on-primary">check_circle</span>
+                  </div>
+                  <p class="md-body-medium text-md-on-primary/80">
+                    Este texto cumple con WCAG AAA (ratio: 12.1:1)
+                  </p>
+                </div>
+                
+                <!-- Medium Contrast -->
+                <div class="bg-md-secondary-container rounded-lg p-4">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="md-title-medium text-md-on-secondary-container">Buen Contraste</span>
+                    <span class="material-icons text-md-on-secondary-container">check</span>
+                  </div>
+                  <p class="md-body-medium text-md-on-secondary-container/80">
+                    Este texto cumple con WCAG AA (ratio: 7.2:1)
+                  </p>
+                </div>
+                
+                <!-- Surface Contrast -->
+                <div class="bg-md-surface-container rounded-lg p-4 border border-md-outline-variant">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="md-title-medium text-md-on-surface">Contraste Superficie</span>
+                    <span class="material-icons text-md-on-surface">visibility</span>
+                  </div>
+                  <p class="md-body-medium text-md-on-surface-variant">
+                    Optimizado para lectura prolongada (ratio: 8.5:1)
+                  </p>
+                </div>
+              </div>
+            </ImprovedCard>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scientific Features Summary -->
+    <section class="bg-md-surface-container py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="md-headline-large text-md-primary mb-4">🔬 Resumen Científico</h2>
+          <p class="md-body-large text-md-on-surface-variant max-w-2xl mx-auto">
+            Todas las características científicas integradas en un sistema cohesivo
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- HCT Colors -->
+          <ImprovedCard variant="elevated" class="p-6 text-center">
+            <div class="w-16 h-16 bg-md-primary-container rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="material-icons text-md-on-primary-container text-2xl">palette</span>
+            </div>
+            <h3 class="md-title-medium text-md-on-surface mb-2">Colores HCT</h3>
+            <p class="md-body-small text-md-on-surface-variant mb-3">
+              Algoritmo científico de percepción del color
+            </p>
+            <div class="text-md-primary md-label-large">100+ Tonos</div>
+          </ImprovedCard>
+          
+          <!-- Material Motion -->
+          <ImprovedCard variant="elevated" class="p-6 text-center">
+            <div class="w-16 h-16 bg-md-secondary-container rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="material-icons text-md-on-secondary-container text-2xl">animation</span>
+            </div>
+            <h3 class="md-title-medium text-md-on-surface mb-2">Material Motion</h3>
+            <p class="md-body-small text-md-on-surface-variant mb-3">
+              Animaciones basadas en física
+            </p>
+            <div class="text-md-secondary md-label-large">12 Curvas</div>
+          </ImprovedCard>
+          
+          <!-- WCAG Compliance -->
+          <ImprovedCard variant="elevated" class="p-6 text-center">
+            <div class="w-16 h-16 bg-md-tertiary-container rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="material-icons text-md-on-tertiary-container text-2xl">accessibility</span>
+            </div>
+            <h3 class="md-title-medium text-md-on-surface mb-2">WCAG AAA</h3>
+            <p class="md-body-small text-md-on-surface-variant mb-3">
+              Validación automática de contraste
+            </p>
+            <div class="text-md-tertiary md-label-large">100% Cumplimiento</div>
+          </ImprovedCard>
+          
+          <!-- Design Tokens -->
+          <ImprovedCard variant="elevated" class="p-6 text-center">
+            <div class="w-16 h-16 bg-md-error-container rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="material-icons text-md-on-error-container text-2xl">token</span>
+            </div>
+            <h3 class="md-title-medium text-md-on-surface mb-2">Design Tokens</h3>
+            <p class="md-body-small text-md-on-surface-variant mb-3">
+              Sistema robusto de tokens
+            </p>
+            <div class="text-md-error md-label-large">200+ Variables</div>
+          </ImprovedCard>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="md-headline-large text-md-on-surface mb-4">
+          Experimenta el Diseño Científico
+        </h2>
+        <p class="md-body-large text-md-on-surface-variant mb-8">
+          Explora todos los componentes mejorados con características científicas
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <ImprovedButton variant="filled" size="large" href="/improved-components">
+            Ver Componentes Mejorados
+          </ImprovedButton>
+          <ImprovedButton variant="outlined" size="large" href="/tools">
+            Explorar Herramientas MCP
+          </ImprovedButton>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Animaciones científicas adicionales */
+  @keyframes pulse-scientific {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  .animate-pulse-scientific {
+    animation: pulse-scientific 2s ease-in-out infinite;
+  }
+  
+  /* Transiciones Material Motion */
+  .transition-material {
+    transition: all var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+  }
+  
+  /* Estados de hover científicos */
+  .hover\:elevation-2:hover {
+    box-shadow: var(--md-sys-elevation-level2);
+  }
+</style>

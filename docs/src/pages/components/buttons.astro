@@ -1,0 +1,229 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+import Button from '../../components/Button.astro';
+---
+
+<Layout title="Buttons - Material Design 3 Components">
+	<main class="min-h-screen bg-surface p-6">
+		<div class="max-w-7xl mx-auto">
+			<!-- Header -->
+			<header class="mb-8">
+				<nav class="mb-4">
+					<a href="/components" class="text-primary hover:text-primary-variant inline-flex items-center gap-2">
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+						</svg>
+						Back to Components
+					</a>
+				</nav>
+				<h1 class="text-4xl font-bold text-on-surface mb-4">Buttons</h1>
+				<p class="text-lg text-on-surface-variant mb-8">Material Design 3 buttons with multiple variants and states</p>
+			</header>
+
+			<!-- Button Variants Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+				<!-- Filled Buttons -->
+				<Card variant="outlined" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">Filled</h3>
+					<p class="text-on-surface-variant mb-6">High-emphasis buttons for primary actions</p>
+					<div class="space-y-4">
+						<Button variant="filled" size="small">Small</Button>
+						<Button variant="filled" size="medium">Medium</Button>
+						<Button variant="filled" size="large">Large</Button>
+						<Button variant="filled" size="medium" disabled>Disabled</Button>
+					</div>
+				</Card>
+
+				<!-- Outlined Buttons -->
+				<Card variant="outlined" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">Outlined</h3>
+					<p class="text-on-surface-variant mb-6">Medium-emphasis buttons with visible border</p>
+					<div class="space-y-4">
+						<Button variant="outlined" size="small">Small</Button>
+						<Button variant="outlined" size="medium">Medium</Button>
+						<Button variant="outlined" size="large">Large</Button>
+						<Button variant="outlined" size="medium" disabled>Disabled</Button>
+					</div>
+				</Card>
+
+				<!-- Text Buttons -->
+				<Card variant="outlined" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">Text</h3>
+					<p class="text-on-surface-variant mb-6">Low-emphasis buttons without background</p>
+					<div class="space-y-4">
+						<Button variant="text" size="small">Small</Button>
+						<Button variant="text" size="medium">Medium</Button>
+						<Button variant="text" size="large">Large</Button>
+						<Button variant="text" size="medium" disabled>Disabled</Button>
+					</div>
+				</Card>
+
+				<!-- Elevated Buttons -->
+				<Card variant="outlined" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">Elevated</h3>
+					<p class="text-on-surface-variant mb-6">Buttons with elevation to stand out from surfaces</p>
+					<div class="space-y-4">
+						<Button variant="elevated" size="small">Small</Button>
+						<Button variant="elevated" size="medium">Medium</Button>
+						<Button variant="elevated" size="large">Large</Button>
+						<Button variant="elevated" size="medium" disabled>Disabled</Button>
+					</div>
+				</Card>
+
+				<!-- Tonal Buttons -->
+				<Card variant="outlined" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">Tonal</h3>
+					<p class="text-on-surface-variant mb-6">Buttons with subtle background color</p>
+					<div class="space-y-4">
+						<Button variant="tonal" size="small">Small</Button>
+						<Button variant="tonal" size="medium">Medium</Button>
+						<Button variant="tonal" size="large">Large</Button>
+						<Button variant="tonal" size="medium" disabled>Disabled</Button>
+					</div>
+				</Card>
+
+				<!-- FAB Buttons -->
+				<Card variant="outlined" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">FAB</h3>
+					<p class="text-on-surface-variant mb-6">Floating Action Buttons for primary actions</p>
+					<div class="flex flex-col items-center gap-4">
+						<button class="w-10 h-10 rounded-full bg-primary text-on-primary shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+							</svg>
+						</button>
+						<button class="w-14 h-14 rounded-full bg-primary text-on-primary shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center">
+							<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+							</svg>
+						</button>
+						<button class="w-16 h-16 rounded-full bg-primary text-on-primary shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center">
+							<svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+							</svg>
+						</button>
+						<button class="px-6 py-3 rounded-full bg-primary text-on-primary shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+								<path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+							</svg>
+							Extended
+						</button>
+					</div>
+				</Card>
+			</div>
+
+			<!-- Button with Icons -->
+			<Card variant="elevated" class="p-6 mb-12">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Buttons with Icons</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Leading Icons</h4>
+						<div class="space-y-3">
+							<button class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-full hover:shadow-lg transition-all duration-300">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+								</svg>
+								Download
+							</button>
+							<button class="inline-flex items-center gap-2 px-6 py-3 border-2 border-outline text-on-surface rounded-full hover:bg-surface-container-low transition-all duration-300">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+								</svg>
+								Share
+							</button>
+						</div>
+					</div>
+
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Trailing Icons</h4>
+						<div class="space-y-3">
+							<button class="inline-flex items-center gap-2 px-6 py-3 bg-secondary-container text-on-secondary-container rounded-full hover:shadow-lg transition-all duration-300">
+								Next
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+								</svg>
+							</button>
+							<button class="inline-flex items-center gap-2 px-6 py-3 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">
+								Learn More
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Icon Only</h4>
+						<div class="flex gap-3">
+							<button class="w-12 h-12 bg-primary text-on-primary rounded-full hover:shadow-lg transition-all duration-300 flex items-center justify-center">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+								</svg>
+							</button>
+							<button class="w-12 h-12 border-2 border-outline text-on-surface rounded-full hover:bg-surface-container-low transition-all duration-300 flex items-center justify-center">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+								</svg>
+							</button>
+							<button class="w-12 h-12 bg-tertiary-container text-on-tertiary-container rounded-full hover:shadow-lg transition-all duration-300 flex items-center justify-center">
+								<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			</Card>
+
+			<!-- Usage Guidelines -->
+			<Card variant="outlined" class="p-6">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Usage Guidelines</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">When to Use</h4>
+						<ul class="space-y-2 text-on-surface-variant">
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Filled:</strong> Primary actions like "Save", "Submit", "Continue"</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Outlined:</strong> Secondary actions like "Cancel", "Back"</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Text:</strong> Low-priority actions like "Learn More", "Skip"</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>FAB:</strong> Primary action that's always accessible</span>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Best Practices</h4>
+						<ul class="space-y-2 text-on-surface-variant">
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Use clear, action-oriented labels</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Maintain consistent sizing within the same context</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Provide adequate spacing between buttons</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Use icons to enhance understanding, not replace text</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</Card>
+		</div>
+	</main>
+</Layout>

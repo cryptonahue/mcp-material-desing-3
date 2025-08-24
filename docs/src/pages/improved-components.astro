@@ -1,0 +1,264 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ImprovedButton from '../components/ImprovedButton.astro';
+import ImprovedCard from '../components/ImprovedCard.astro';
+import ImprovedFAB from '../components/ImprovedFAB.astro';
+import ImprovedNavigation from '../components/ImprovedNavigation.astro';
+import ImprovedTabs from '../components/ImprovedTabs.astro';
+---
+
+<Layout title="Componentes Mejorados - Material Tailwind MCP">
+  <main class="min-h-screen bg-md-background text-md-on-background">
+    <!-- Header -->
+    <header class="bg-md-surface border-b border-md-outline-variant py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="md-display-large text-md-primary mb-4">
+            🔬 Componentes Científicamente Mejorados
+          </h1>
+          <p class="md-body-large text-md-on-surface-variant max-w-3xl mx-auto">
+            Componentes Material Design 3 generados con algoritmos HCT, curvas de animación científicas,
+            y accesibilidad WCAG AA/AAA compliant usando los generadores modulares del MCP.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Buttons Section -->
+      <section class="mb-16">
+        <div class="mb-8">
+          <h2 class="md-headline-large text-md-primary mb-4">🔘 Botones Mejorados</h2>
+          <p class="md-body-large text-md-on-surface-variant mb-6">
+            Botones con efectos ripple científicos, focus rings precisos y transiciones basadas en Material Motion.
+          </p>
+        </div>
+        
+        <div class="bg-md-surface-container rounded-xl p-8 border border-md-outline-variant">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="space-y-4">
+              <h3 class="md-title-medium text-md-on-surface">Variantes</h3>
+              <div class="space-y-3">
+                <ImprovedButton variant="filled">Filled</ImprovedButton>
+                <ImprovedButton variant="outlined">Outlined</ImprovedButton>
+                <ImprovedButton variant="text">Text</ImprovedButton>
+                <ImprovedButton variant="elevated">Elevated</ImprovedButton>
+                <ImprovedButton variant="tonal">Tonal</ImprovedButton>
+              </div>
+            </div>
+            
+            <div class="space-y-4">
+              <h3 class="md-title-medium text-md-on-surface">Tamaños</h3>
+              <div class="space-y-3">
+                <ImprovedButton size="small">Pequeño</ImprovedButton>
+                <ImprovedButton size="medium">Mediano</ImprovedButton>
+                <ImprovedButton size="large">Grande</ImprovedButton>
+              </div>
+            </div>
+            
+            <div class="space-y-4">
+              <h3 class="md-title-medium text-md-on-surface">Estados</h3>
+              <div class="space-y-3">
+                <ImprovedButton>Normal</ImprovedButton>
+                <ImprovedButton disabled>Deshabilitado</ImprovedButton>
+                <ImprovedButton href="#">Como enlace</ImprovedButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards Section -->
+      <section class="mb-16">
+        <div class="mb-8">
+          <h2 class="md-headline-large text-md-primary mb-4">🃏 Tarjetas Mejoradas</h2>
+          <p class="md-body-large text-md-on-surface-variant mb-6">
+            Tarjetas con elevaciones físicamente correctas, estados interactivos y transiciones suaves.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ImprovedCard variant="elevated" class="p-6">
+            <h3 class="md-title-large text-md-on-surface mb-3">Tarjeta Elevada</h3>
+            <p class="md-body-medium text-md-on-surface-variant mb-4">
+              Esta tarjeta usa elevación científica con sombras físicamente correctas.
+            </p>
+            <ImprovedButton variant="text">Acción</ImprovedButton>
+          </ImprovedCard>
+          
+          <ImprovedCard variant="filled" class="p-6">
+            <h3 class="md-title-large text-md-on-surface mb-3">Tarjeta Rellena</h3>
+            <p class="md-body-medium text-md-on-surface-variant mb-4">
+              Tarjeta con fondo de color usando tokens científicos HCT.
+            </p>
+            <ImprovedButton variant="text">Acción</ImprovedButton>
+          </ImprovedCard>
+          
+          <ImprovedCard variant="outlined" interactive class="p-6">
+            <h3 class="md-title-large text-md-on-surface mb-3">Tarjeta Interactiva</h3>
+            <p class="md-body-medium text-md-on-surface-variant mb-4">
+              Tarjeta con estados hover y focus mejorados. ¡Haz clic!
+            </p>
+            <ImprovedButton variant="text">Acción</ImprovedButton>
+          </ImprovedCard>
+        </div>
+      </section>
+
+      <!-- Tabs Section -->
+      <section class="mb-16">
+        <div class="mb-8">
+          <h2 class="md-headline-large text-md-primary mb-4">📑 Pestañas Mejoradas</h2>
+          <p class="md-body-large text-md-on-surface-variant mb-6">
+            Sistema de pestañas con transiciones científicas y accesibilidad completa.
+          </p>
+        </div>
+        
+        <div class="bg-md-surface-container rounded-xl p-8 border border-md-outline-variant">
+          <ImprovedTabs 
+            tabs={[
+              { 
+                label: 'Algoritmo HCT', 
+                content: 'El algoritmo HCT (Hue, Chroma, Tone) proporciona colores científicamente precisos basados en la percepción humana del color.',
+                active: true,
+                icon: 'palette'
+              },
+              { 
+                label: 'Material Motion', 
+                content: 'Las curvas de animación están basadas en el sistema Material Motion para transiciones naturales y físicamente correctas.',
+                active: false,
+                icon: 'animation'
+              },
+              { 
+                label: 'Accesibilidad WCAG', 
+                content: 'Todos los componentes cumplen con los estándares WCAG AA/AAA para garantizar la accesibilidad universal.',
+                active: false,
+                icon: 'accessibility'
+              }
+            ]}
+            variant="primary"
+            size="medium"
+          />
+        </div>
+      </section>
+
+      <!-- Navigation Section -->
+      <section class="mb-16">
+        <div class="mb-8">
+          <h2 class="md-headline-large text-md-primary mb-4">🧭 Navegación Mejorada</h2>
+          <p class="md-body-large text-md-on-surface-variant mb-6">
+            Sistema de navegación con estados activos científicos y transiciones suaves.
+          </p>
+        </div>
+        
+        <div class="bg-md-surface-container rounded-xl p-8 border border-md-outline-variant">
+          <ImprovedNavigation 
+            currentPath="/improved-components"
+            items={[
+              { label: 'Inicio', href: '/', icon: 'home' },
+              { label: 'Componentes', href: '/components', icon: 'widgets' },
+              { label: 'Mejorados', href: '/improved-components', icon: 'science' },
+              { label: 'Herramientas', href: '/tools', icon: 'build' }
+            ]}
+          />
+        </div>
+      </section>
+
+      <!-- Scientific Features -->
+      <section class="mb-16">
+        <div class="mb-8">
+          <h2 class="md-headline-large text-md-primary mb-4">🔬 Características Científicas</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ImprovedCard variant="elevated" class="p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-md-primary-container rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="material-icons text-md-on-primary-container">palette</span>
+              </div>
+              <div>
+                <h3 class="md-title-medium text-md-on-surface mb-2">Algoritmo HCT</h3>
+                <p class="md-body-medium text-md-on-surface-variant">
+                  Colores generados usando el algoritmo HCT que considera la percepción humana del color,
+                  garantizando consistencia visual y accesibilidad.
+                </p>
+              </div>
+            </div>
+          </ImprovedCard>
+          
+          <ImprovedCard variant="elevated" class="p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-md-secondary-container rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="material-icons text-md-on-secondary-container">animation</span>
+              </div>
+              <div>
+                <h3 class="md-title-medium text-md-on-surface mb-2">Material Motion</h3>
+                <p class="md-body-medium text-md-on-surface-variant">
+                  Curvas de animación basadas en principios físicos que crean transiciones
+                  naturales y predecibles para una mejor experiencia de usuario.
+                </p>
+              </div>
+            </div>
+          </ImprovedCard>
+          
+          <ImprovedCard variant="elevated" class="p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-md-tertiary-container rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="material-icons text-md-on-tertiary-container">accessibility</span>
+              </div>
+              <div>
+                <h3 class="md-title-medium text-md-on-surface mb-2">Accesibilidad WCAG</h3>
+                <p class="md-body-medium text-md-on-surface-variant">
+                  Cumplimiento completo con estándares WCAG AA/AAA, incluyendo contraste de colores,
+                  navegación por teclado y lectores de pantalla.
+                </p>
+              </div>
+            </div>
+          </ImprovedCard>
+          
+          <ImprovedCard variant="elevated" class="p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-md-error-container rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="material-icons text-md-on-error-container">science</span>
+              </div>
+              <div>
+                <h3 class="md-title-medium text-md-on-surface mb-2">Elevación Física</h3>
+                <p class="md-body-medium text-md-on-surface-variant">
+                  Sombras calculadas usando principios de iluminación física para crear
+                  una sensación de profundidad realista y consistente.
+                </p>
+              </div>
+            </div>
+          </ImprovedCard>
+        </div>
+      </section>
+    </div>
+
+    <!-- Improved FAB -->
+    <ImprovedFAB 
+      icon="science" 
+      variant="primary" 
+      size="medium" 
+      position="bottom-right"
+      aria-label="Componentes científicos"
+    />
+  </main>
+</Layout>
+
+<style>
+  /* Additional styles for the demo page */
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+</style>

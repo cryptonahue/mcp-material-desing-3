@@ -1,0 +1,269 @@
+---
+// Improved Material Design 3 Navigation using MCP Generator
+export interface Props {
+  currentPath?: string;
+  items?: Array<{
+    label: string;
+    href: string;
+    icon?: string;
+    active?: boolean;
+  }>;
+}
+
+const { 
+  currentPath = '',
+  items = [
+    { label: 'Inicio', href: '/', icon: 'home' },
+    { label: 'Componentes', href: '/components', icon: 'widgets' },
+    { label: 'Herramientas', href: '/tools', icon: 'build' },
+    { label: 'Ejemplos', href: '/examples', icon: 'code' }
+  ]
+} = Astro.props;
+
+// Mark active item based on current path
+const processedItems = items.map(item => ({
+  ...item,
+  active: currentPath === item.href
+}));
+---
+
+<nav id="nav-bar-p1jcxtsja" class="md-navigation-bar md-navigation-bar--top md-navigation-bar--primary" role="navigation" aria-label="Main navigation" >
+  
+    <button class="md-nav-item md-nav-item--active" 
+            id="nav-bar-p1jcxtsja-item-0"
+            role="tab"
+            aria-selected="true"
+            data-value="undefined"
+            >
+      <div class="md-nav-item__icon-container">
+        <span class="material-icons">home</span>
+        
+      </div>
+      <span class="md-nav-item__label">Inicio</span>
+      <div class="md-nav-item__indicator"></div>
+    </button>
+    <button class="md-nav-item" 
+            id="nav-bar-p1jcxtsja-item-1"
+            role="tab"
+            aria-selected="undefined"
+            data-value="undefined"
+            >
+      <div class="md-nav-item__icon-container">
+        <span class="material-icons">widgets</span>
+        
+      </div>
+      <span class="md-nav-item__label">Componentes</span>
+      <div class="md-nav-item__indicator"></div>
+    </button>
+    <button class="md-nav-item" 
+            id="nav-bar-p1jcxtsja-item-2"
+            role="tab"
+            aria-selected="undefined"
+            data-value="undefined"
+            >
+      <div class="md-nav-item__icon-container">
+        <span class="material-icons">build</span>
+        
+      </div>
+      <span class="md-nav-item__label">Herramientas</span>
+      <div class="md-nav-item__indicator"></div>
+    </button>
+    <button class="md-nav-item" 
+            id="nav-bar-p1jcxtsja-item-3"
+            role="tab"
+            aria-selected="undefined"
+            data-value="undefined"
+            >
+      <div class="md-nav-item__icon-container">
+        <span class="material-icons">code</span>
+        
+      </div>
+      <span class="md-nav-item__label">Ejemplos</span>
+      <div class="md-nav-item__indicator"></div>
+    </button>
+</nav>
+
+<style>
+/* Material Design 3 Navigation Bar */
+.md-navigation-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--md-sys-color-surface, #fffbfe);
+  border-top: 1px solid var(--md-sys-color-outline, #79747e);
+  padding: 12px 0 16px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  min-height: 80px;
+}
+
+.md-navigation-bar--bottom {
+  bottom: 0;
+}
+
+.md-navigation-bar--top {
+  top: 0;
+  border-top: none;
+  border-bottom: 1px solid var(--md-sys-color-outline, #79747e);
+}
+
+.md-navigation-bar--small {
+  min-height: 64px;
+  padding: 8px 0 12px;
+}
+
+/* Navigation Items */
+.md-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  max-width: 168px;
+  min-width: 48px;
+  padding: 4px 0;
+  border: none;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  outline: none;
+}
+
+.md-nav-item:hover:not(.md-nav-item--active) {
+  color: var(--md-sys-color-on-surface, #1c1b1f);
+}
+
+.md-nav-item:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary, #6750a4);
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+
+/* Active state */
+.md-nav-item--active {
+  color: var(--md-sys-color-on-secondary-container, #1d192b);
+}
+
+.md-nav-item--active .md-nav-item__icon-container::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -16px;
+  right: -16px;
+  bottom: -4px;
+  background: var(--md-sys-color-secondary-container, #e8def8);
+  border-radius: 16px;
+  z-index: -1;
+}
+
+/* Icon container */
+.md-nav-item__icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 4px;
+  font-size: 24px;
+}
+
+/* Labels */
+.md-nav-item__label {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  transition: opacity 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+/* Hide inactive labels option */
+.md-navigation-bar--hide-inactive-labels .md-nav-item:not(.md-nav-item--active) .md-nav-item__label {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Badges */
+.md-nav-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--md-sys-color-error, #ba1a1a);
+  color: var(--md-sys-color-on-error, #ffffff);
+  border-radius: 6px;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
+  min-width: 12px;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Indicator (bottom line for active item) */
+.md-nav-item__indicator {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: var(--md-sys-color-primary, #6750a4);
+  border-radius: 3px 3px 0 0;
+  transition: width 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.md-nav-item--active .md-nav-item__indicator {
+  width: 64px;
+}
+
+/* Small variant adjustments */
+.md-navigation-bar--small .md-nav-item__icon-container {
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+}
+
+.md-navigation-bar--small .md-nav-item__label {
+  font-size: 11px;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .md-navigation-bar {
+  background: var(--md-sys-color-surface, #fffbfe);
+  border-color: var(--md-sys-color-outline, #79747e);
+}
+
+[data-theme="dark"] .md-nav-item {
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+}
+
+[data-theme="dark"] .md-nav-item--active {
+  color: var(--md-sys-color-on-secondary-container, #1d192b);
+}
+
+[data-theme="dark"] .md-nav-item--active .md-nav-item__icon-container::before {
+  background: var(--md-sys-color-secondary-container, #e8def8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .md-navigation-bar {
+    padding: 8px 0 12px;
+  }
+  
+  .md-nav-item__label {
+    font-size: 10px;
+  }
+}
+</style>
+
+<script>
+
+</script>

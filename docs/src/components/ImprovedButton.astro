@@ -1,0 +1,114 @@
+---
+// Improved Material Design 3 Button using MCP Generator
+export interface Props {
+  variant?: 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  id?: string;
+  'aria-label'?: string;
+}
+
+const {
+  variant = 'filled',
+  size = 'medium',
+  disabled = false,
+  href,
+  type = 'button',
+  class: className = '',
+  id,
+  'aria-label': ariaLabel,
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<button class="btn btn--filled" type="button">
+  <span class="btn-content">
+    
+    <span class="btn-label">Button</span>
+    
+  </span>
+</button>
+
+<style>
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  min-width: 64px;
+  padding: 0 24px;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.btn--filled {
+  background-color: var(--md-sys-color-primary, #6750a4);
+  color: var(--md-sys-color-on-primary, #ffffff);
+}
+
+.btn--filled:hover:not(:disabled) {
+  box-shadow: 0 2px 8px rgba(103, 80, 164, 0.3);
+}
+
+.btn--outlined {
+  border: 1px solid var(--md-sys-color-outline, #79747e);
+  color: var(--md-sys-color-primary, #6750a4);
+}
+
+.btn--outlined:hover:not(:disabled) {
+  background-color: rgba(103, 80, 164, 0.08);
+}
+
+.btn--text {
+  color: var(--md-sys-color-primary, #6750a4);
+}
+
+.btn--text:hover:not(:disabled) {
+  background-color: rgba(103, 80, 164, 0.08);
+}
+
+/* Size variants */
+.btn--small {
+  min-height: 32px;
+  padding: 0 16px;
+  font-size: 13px;
+}
+
+.btn--large {
+  min-height: 48px;
+  padding: 0 32px;
+  font-size: 16px;
+}
+
+/* Icon styles */
+.btn-icon {
+  font-size: 18px;
+}
+
+.btn--small .btn-icon {
+  font-size: 16px;
+}
+
+.btn--large .btn-icon {
+  font-size: 20px;
+}
+
+</style>
+
+<script>
+
+</script>

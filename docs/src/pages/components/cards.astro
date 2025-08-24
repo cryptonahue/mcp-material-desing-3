@@ -1,0 +1,302 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Layout title="Cards - Material Design 3 Components">
+	<main class="min-h-screen bg-surface p-6">
+		<div class="max-w-7xl mx-auto">
+			<!-- Header -->
+			<header class="mb-8">
+				<nav class="mb-4">
+					<a href="/components" class="text-primary hover:text-primary-variant inline-flex items-center gap-2">
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+						</svg>
+						Back to Components
+					</a>
+				</nav>
+				<h1 class="text-4xl font-bold text-on-surface mb-4">Cards</h1>
+				<p class="text-lg text-on-surface-variant mb-8">Material Design 3 cards for displaying content and actions</p>
+			</header>
+
+			<!-- Card Variants Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+				<!-- Elevated Cards -->
+				<Card variant="elevated" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">Elevated</h3>
+					<p class="text-on-surface-variant mb-6">Cards with shadow elevation</p>
+					<div class="space-y-4">
+						<Card variant="elevated" class="p-4">
+							<h4 class="font-medium text-on-surface mb-2">Card Title</h4>
+							<p class="text-sm text-on-surface-variant mb-3">This is a sample elevated card with some content.</p>
+							<div class="flex gap-2">
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Action</button>
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Learn More</button>
+							</div>
+						</Card>
+					</div>
+				</Card>
+
+				<!-- Filled Cards -->
+				<Card variant="filled" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">Filled</h3>
+					<p class="text-on-surface-variant mb-6">Cards with filled background</p>
+					<div class="space-y-4">
+						<Card variant="filled" class="p-4">
+							<h4 class="font-medium text-on-surface mb-2">Card Title</h4>
+							<p class="text-sm text-on-surface-variant mb-3">This is a sample filled card with some content.</p>
+							<div class="flex gap-2">
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Action</button>
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Learn More</button>
+							</div>
+						</Card>
+					</div>
+				</Card>
+
+				<!-- Outlined Cards -->
+				<Card variant="outlined" class="p-6">
+					<h3 class="text-xl font-semibold text-on-surface mb-4">Outlined</h3>
+					<p class="text-on-surface-variant mb-6">Cards with visible border</p>
+					<div class="space-y-4">
+						<Card variant="outlined" class="p-4">
+							<h4 class="font-medium text-on-surface mb-2">Card Title</h4>
+							<p class="text-sm text-on-surface-variant mb-3">This is a sample outlined card with some content.</p>
+							<div class="flex gap-2">
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Action</button>
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Learn More</button>
+							</div>
+						</Card>
+					</div>
+				</Card>
+			</div>
+
+			<!-- Card with Image -->
+			<Card variant="elevated" class="p-6 mb-12">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Cards with Images</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<!-- Image Top -->
+					<Card variant="elevated" class="overflow-hidden">
+						<div class="h-48 bg-gradient-to-br from-primary to-secondary"></div>
+						<div class="p-4">
+							<h4 class="font-medium text-on-surface mb-2">Image Top Card</h4>
+							<p class="text-sm text-on-surface-variant mb-4">Card with image at the top and content below.</p>
+							<div class="flex gap-2">
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Share</button>
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Learn More</button>
+							</div>
+						</div>
+					</Card>
+
+					<!-- Image with Overlay -->
+					<Card variant="elevated" class="overflow-hidden relative">
+						<div class="h-64 bg-gradient-to-br from-tertiary to-primary relative">
+							<div class="absolute inset-0 bg-black bg-opacity-40"></div>
+							<div class="absolute bottom-4 left-4 right-4 text-white">
+								<h4 class="font-medium mb-2">Overlay Card</h4>
+								<p class="text-sm opacity-90">Card with text overlay on image.</p>
+							</div>
+						</div>
+						<div class="p-4">
+							<div class="flex gap-2">
+								<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Action</button>
+							</div>
+						</div>
+					</Card>
+
+					<!-- Horizontal Card -->
+					<Card variant="elevated" class="flex overflow-hidden">
+						<div class="w-24 bg-gradient-to-b from-secondary to-tertiary flex-shrink-0"></div>
+						<div class="p-4 flex-1">
+							<h4 class="font-medium text-on-surface mb-2">Horizontal Card</h4>
+							<p class="text-sm text-on-surface-variant mb-4">Card with horizontal layout.</p>
+							<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Action</button>
+						</div>
+					</Card>
+				</div>
+			</Card>
+
+			<!-- Interactive Cards -->
+			<Card variant="elevated" class="p-6 mb-12">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Interactive Cards</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<!-- Clickable Card -->
+					<button class="text-left bg-surface-container hover:bg-surface-container-high border border-outline rounded-xl p-4 transition-all duration-300 hover:shadow-lg group">
+						<div class="flex items-start justify-between mb-3">
+							<h4 class="font-medium text-on-surface group-hover:text-primary">Clickable Card</h4>
+							<svg class="w-5 h-5 text-on-surface-variant group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</div>
+						<p class="text-sm text-on-surface-variant">Entire card is clickable and responds to hover.</p>
+					</button>
+
+					<!-- Card with Menu -->
+					<Card variant="outlined" class="p-4 relative">
+						<div class="flex items-start justify-between mb-3">
+							<h4 class="font-medium text-on-surface">Card with Menu</h4>
+							<button class="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors">
+								<svg class="w-5 h-5 text-on-surface-variant" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
+								</svg>
+							</button>
+						</div>
+						<p class="text-sm text-on-surface-variant mb-4">Card with overflow menu for additional actions.</p>
+						<div class="flex gap-2">
+							<button class="px-4 py-2 text-primary hover:bg-primary-container hover:text-on-primary-container rounded-full transition-all duration-300">Action</button>
+						</div>
+					</Card>
+
+					<!-- Card with Selection -->
+					<Card variant="outlined" class="p-4 border-2 border-primary bg-primary-container">
+						<div class="flex items-start justify-between mb-3">
+							<h4 class="font-medium text-on-primary-container">Selected Card</h4>
+							<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+								<svg class="w-4 h-4 text-on-primary" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+							</div>
+						</div>
+						<p class="text-sm text-on-primary-container opacity-80">Card showing selected state with visual feedback.</p>
+					</Card>
+				</div>
+			</Card>
+
+			<!-- Complex Cards -->
+			<Card variant="elevated" class="p-6 mb-12">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Complex Cards</h3>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+					<!-- Product Card -->
+					<Card variant="elevated" class="overflow-hidden">
+						<div class="h-48 bg-gradient-to-br from-primary via-secondary to-tertiary relative">
+							<div class="absolute top-4 right-4">
+								<button class="w-10 h-10 bg-white bg-opacity-20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+									</svg>
+								</button>
+							</div>
+							<div class="absolute bottom-4 left-4">
+								<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-sm font-medium">New</span>
+							</div>
+						</div>
+						<div class="p-4">
+							<div class="flex items-start justify-between mb-2">
+								<h4 class="font-semibold text-on-surface">Product Name</h4>
+								<span class="text-lg font-bold text-primary">$99</span>
+							</div>
+							<p class="text-sm text-on-surface-variant mb-3">High-quality product with amazing features and great value.</p>
+							<div class="flex items-center gap-1 mb-4">
+								<div class="flex text-yellow-500">
+									<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+									</svg>
+									<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+									</svg>
+									<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+									</svg>
+									<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+									</svg>
+									<svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+										<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+									</svg>
+								</div>
+								<span class="text-sm text-on-surface-variant ml-2">(4.8)</span>
+							</div>
+							<div class="flex gap-2">
+								<button class="flex-1 px-4 py-2 bg-primary text-on-primary rounded-full hover:shadow-lg transition-all duration-300">Add to Cart</button>
+								<button class="px-4 py-2 border-2 border-outline text-on-surface rounded-full hover:bg-surface-container-low transition-all duration-300">Details</button>
+							</div>
+						</div>
+					</Card>
+
+					<!-- Profile Card -->
+					<Card variant="outlined" class="p-6">
+						<div class="flex items-center gap-4 mb-4">
+							<div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-bold text-xl">
+								JD
+							</div>
+							<div class="flex-1">
+								<h4 class="font-semibold text-on-surface">John Doe</h4>
+								<p class="text-sm text-on-surface-variant">Senior Designer</p>
+								<p class="text-sm text-on-surface-variant">San Francisco, CA</p>
+							</div>
+							<button class="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors">
+								<svg class="w-5 h-5 text-on-surface-variant" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
+								</svg>
+							</button>
+						</div>
+						<p class="text-sm text-on-surface-variant mb-4">Passionate about creating beautiful and functional user experiences. 5+ years in design.</p>
+						<div class="flex gap-4 mb-4">
+							<div class="text-center">
+								<div class="font-semibold text-on-surface">127</div>
+								<div class="text-xs text-on-surface-variant">Projects</div>
+							</div>
+							<div class="text-center">
+								<div class="font-semibold text-on-surface">2.4k</div>
+								<div class="text-xs text-on-surface-variant">Followers</div>
+							</div>
+							<div class="text-center">
+								<div class="font-semibold text-on-surface">892</div>
+								<div class="text-xs text-on-surface-variant">Following</div>
+							</div>
+						</div>
+						<div class="flex gap-2">
+							<button class="flex-1 px-4 py-2 bg-primary text-on-primary rounded-full hover:shadow-lg transition-all duration-300">Follow</button>
+							<button class="px-4 py-2 border-2 border-outline text-on-surface rounded-full hover:bg-surface-container-low transition-all duration-300">Message</button>
+						</div>
+					</Card>
+				</div>
+			</Card>
+
+			<!-- Usage Guidelines -->
+			<Card variant="outlined" class="p-6">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Usage Guidelines</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">When to Use</h4>
+						<ul class="space-y-2 text-on-surface-variant">
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Elevated:</strong> When content needs to stand out from the background</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Filled:</strong> For content that needs subtle emphasis</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Outlined:</strong> For content that needs clear boundaries</span>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Best Practices</h4>
+						<ul class="space-y-2 text-on-surface-variant">
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Keep content scannable with clear hierarchy</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Use consistent spacing and alignment</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Limit actions to 1-2 primary actions per card</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Ensure adequate touch targets for interactive elements</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</Card>
+		</div>
+	</main>
+</Layout>

@@ -1,0 +1,213 @@
+---
+// Improved Material Design 3 FAB using MCP Generator
+export interface Props {
+  icon?: string;
+  label?: string;
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'primary' | 'secondary' | 'surface' | 'tertiary';
+  position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left' | 'custom';
+  extended?: boolean;
+  disabled?: boolean;
+  href?: string;
+  class?: string;
+  id?: string;
+  'aria-label'?: string;
+}
+
+const {
+  icon = 'add',
+  label = '',
+  size = 'medium',
+  variant = 'primary',
+  position = 'bottom-right',
+  extended = false,
+  disabled = false,
+  href,
+  class: className = '',
+  id,
+  'aria-label': ariaLabel,
+  ...rest
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<button class="md-fab md-fab--primary md-fab--medium md-fab--bottom-right" type="button" role="button" id="fab-y2piwbqz0" aria-label="add button">
+  <span class="md-fab__icon material-icons">add</span>
+  
+</button>
+
+<style>
+/* Material Design 3 FAB */
+.md-fab {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 56px;
+  min-height: 56px;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  background: var(--md-sys-color-primary-container, #eaddff);
+  color: var(--md-sys-color-on-primary-container, #21005d);
+  cursor: pointer;
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 0 1px 18px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+}
+
+.md-fab:hover:not(.md-disabled) {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.16), 0 4px 20px rgba(0, 0, 0, 0.14);
+  transform: translateY(-2px);
+}
+
+.md-fab:active:not(.md-disabled) {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 50ms;
+}
+
+.md-fab:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary, #6750a4);
+  outline-offset: 2px;
+}
+
+/* Variants */
+.md-fab--primary {
+  background: var(--md-sys-color-primary-container, #eaddff);
+  color: var(--md-sys-color-on-primary-container, #21005d);
+}
+
+.md-fab--secondary {
+  background: var(--md-sys-color-secondary-container, #e8def8);
+  color: var(--md-sys-color-on-secondary-container, #1d192b);
+}
+
+.md-fab--surface {
+  background: var(--md-sys-color-surface, #fffbfe);
+  color: var(--md-sys-color-primary, #6750a4);
+  border: 1px solid var(--md-sys-color-outline, #79747e);
+}
+
+.md-fab--tertiary {
+  background: var(--md-sys-color-surface, #fffbfe);
+  color: var(--md-sys-color-on-surface, #1c1b1f);
+}
+
+/* Sizes */
+.md-fab--small {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 8px;
+}
+
+.md-fab--large {
+  min-width: 96px;
+  min-height: 96px;
+  padding: 28px;
+}
+
+.md-fab--large .md-fab__icon {
+  font-size: 36px;
+}
+
+/* Extended FAB */
+.md-fab--extended {
+  min-width: auto;
+  padding: 16px 24px;
+  border-radius: 16px;
+}
+
+.md-fab--small.md-fab--extended {
+  padding: 8px 16px;
+}
+
+.md-fab--large.md-fab--extended {
+  padding: 28px 32px;
+}
+
+/* Position variants */
+.md-fab--bottom-right {
+  bottom: 16px;
+  right: 16px;
+}
+
+.md-fab--bottom-left {
+  bottom: 16px;
+  left: 16px;
+}
+
+.md-fab--top-right {
+  top: 16px;
+  right: 16px;
+}
+
+.md-fab--top-left {
+  top: 16px;
+  left: 16px;
+}
+
+.md-fab--custom {
+  position: relative;
+}
+
+/* FAB elements */
+.md-fab__icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.md-fab__label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Dark theme */
+[data-theme="dark"] .md-fab--primary {
+  background: var(--md-sys-color-primary-container, #eaddff);
+  color: var(--md-sys-color-on-primary-container, #21005d);
+}
+
+[data-theme="dark"] .md-fab--secondary {
+  background: var(--md-sys-color-secondary-container, #e8def8);
+  color: var(--md-sys-color-on-secondary-container, #1d192b);
+}
+
+[data-theme="dark"] .md-fab--surface {
+  background: var(--md-sys-color-surface, #fffbfe);
+  color: var(--md-sys-color-primary, #6750a4);
+  border-color: var(--md-sys-color-outline, #79747e);
+}
+
+[data-theme="dark"] .md-fab--tertiary {
+  background: var(--md-sys-color-surface, #fffbfe);
+  color: var(--md-sys-color-on-surface, #1c1b1f);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .md-fab--bottom-right,
+  .md-fab--bottom-left {
+    bottom: 24px;
+  }
+  
+  .md-fab--bottom-right {
+    right: 24px;
+  }
+  
+  .md-fab--bottom-left {
+    left: 24px;
+  }
+}
+</style>
+
+<script>
+
+</script>

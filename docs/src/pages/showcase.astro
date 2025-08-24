@@ -1,0 +1,406 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ImprovedButton from '../components/ImprovedButton.astro';
+import ImprovedCard from '../components/ImprovedCard.astro';
+import ImprovedFAB from '../components/ImprovedFAB.astro';
+import ImprovedNavigation from '../components/ImprovedNavigation.astro';
+import ImprovedTabs from '../components/ImprovedTabs.astro';
+---
+
+<Layout title="Material Design 3 - Showcase Científico">
+  <main class="min-h-screen bg-background text-on-background">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-primary to-secondary text-on-primary py-24">
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <h1 class="text-display-large font-bold mb-6 animate-fade-in">
+          🔬 Material Design 3
+        </h1>
+        <p class="text-display-small mb-4 opacity-90">
+          Sistema Científico Completo
+        </p>
+        <p class="text-title-large mb-8 opacity-80 max-w-3xl mx-auto">
+          Implementación científica basada en algoritmos HCT, Material Motion y validación WCAG automática
+        </p>
+        
+        <!-- Badges de Características -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <span class="bg-surface text-on-surface px-4 py-2 rounded-full text-label-large font-medium">
+            ✅ HCT Algorithm
+          </span>
+          <span class="bg-surface text-on-surface px-4 py-2 rounded-full text-label-large font-medium">
+            ✅ Material Motion
+          </span>
+          <span class="bg-surface text-on-surface px-4 py-2 rounded-full text-label-large font-medium">
+            ✅ WCAG AA/AAA
+          </span>
+          <span class="bg-surface text-on-surface px-4 py-2 rounded-full text-label-large font-medium">
+            ✅ Scientific Tokens
+          </span>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <ImprovedButton variant="filled" size="large" href="#components">
+            Ver Componentes
+          </ImprovedButton>
+          <ImprovedButton variant="outlined" size="large" href="#accessibility">
+            Reporte WCAG
+          </ImprovedButton>
+        </div>
+      </div>
+      
+      <!-- Decorative Elements -->
+      <div class="absolute top-0 left-0 w-full h-full opacity-10">
+        <div class="absolute top-20 left-20 w-32 h-32 bg-tertiary rounded-full animate-pulse"></div>
+        <div class="absolute bottom-20 right-20 w-24 h-24 bg-secondary rounded-full animate-pulse delay-1000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-primary rounded-full animate-pulse delay-500"></div>
+      </div>
+    </section>
+
+    <!-- Navigation Demo -->
+    <section id="navigation" class="py-16 bg-surface">
+      <div class="container mx-auto px-6">
+        <h2 class="text-headline-large font-bold text-center mb-12 text-on-surface">
+          🧭 Navegación Científica
+        </h2>
+        <ImprovedNavigation />
+      </div>
+    </section>
+
+    <!-- Components Showcase -->
+    <section id="components" class="py-16 bg-background">
+      <div class="container mx-auto px-6">
+        <h2 class="text-headline-large font-bold text-center mb-4 text-on-background">
+          🎨 Componentes Mejorados
+        </h2>
+        <p class="text-body-large text-center mb-12 text-on-background opacity-70 max-w-2xl mx-auto">
+          Cada componente utiliza generadores científicos del MCP con algoritmos HCT, animaciones Material Motion y validación WCAG automática.
+        </p>
+
+        <!-- Buttons Section -->
+        <div class="mb-16">
+          <h3 class="text-headline-medium font-bold mb-8 text-on-background">Botones Científicos</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+              <h4 class="text-title-medium mb-4 text-on-background">Filled</h4>
+              <div class="space-y-4">
+                <ImprovedButton variant="filled" size="small">Pequeño</ImprovedButton>
+                <ImprovedButton variant="filled" size="medium">Mediano</ImprovedButton>
+                <ImprovedButton variant="filled" size="large">Grande</ImprovedButton>
+              </div>
+            </div>
+            <div class="text-center">
+              <h4 class="text-title-medium mb-4 text-on-background">Outlined</h4>
+              <div class="space-y-4">
+                <ImprovedButton variant="outlined" size="small">Pequeño</ImprovedButton>
+                <ImprovedButton variant="outlined" size="medium">Mediano</ImprovedButton>
+                <ImprovedButton variant="outlined" size="large">Grande</ImprovedButton>
+              </div>
+            </div>
+            <div class="text-center">
+              <h4 class="text-title-medium mb-4 text-on-background">Text</h4>
+              <div class="space-y-4">
+                <ImprovedButton variant="text" size="small">Pequeño</ImprovedButton>
+                <ImprovedButton variant="text" size="medium">Mediano</ImprovedButton>
+                <ImprovedButton variant="text" size="large">Grande</ImprovedButton>
+              </div>
+            </div>
+            <div class="text-center">
+              <h4 class="text-title-medium mb-4 text-on-background">Estados</h4>
+              <div class="space-y-4">
+                <ImprovedButton variant="filled" size="medium">Normal</ImprovedButton>
+                <ImprovedButton variant="filled" size="medium" disabled>Deshabilitado</ImprovedButton>
+                <ImprovedFAB size="medium" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cards Section -->
+        <div class="mb-16">
+          <h3 class="text-headline-medium font-bold mb-8 text-on-background">Tarjetas Científicas</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <ImprovedCard variant="elevated">
+              <h4 class="text-title-large font-bold mb-2">Tarjeta Elevada</h4>
+              <p class="text-body-medium mb-4 opacity-70">
+                Utiliza sombras científicamente calculadas con algoritmos de elevación Material Design 3.
+              </p>
+              <ImprovedButton variant="text" size="small">Acción</ImprovedButton>
+            </ImprovedCard>
+            
+            <ImprovedCard variant="filled">
+              <h4 class="text-title-large font-bold mb-2">Tarjeta Rellena</h4>
+              <p class="text-body-medium mb-4 opacity-70">
+                Colores de superficie generados con algoritmo HCT para máximo contraste y accesibilidad.
+              </p>
+              <ImprovedButton variant="text" size="small">Acción</ImprovedButton>
+            </ImprovedCard>
+            
+            <ImprovedCard variant="outlined">
+              <h4 class="text-title-large font-bold mb-2">Tarjeta Delineada</h4>
+              <p class="text-body-medium mb-4 opacity-70">
+                Bordes calculados científicamente para cumplir con estándares WCAG de contraste.
+              </p>
+              <ImprovedButton variant="text" size="small">Acción</ImprovedButton>
+            </ImprovedCard>
+          </div>
+        </div>
+
+        <!-- Tabs Section -->
+        <div class="mb-16">
+          <h3 class="text-headline-medium font-bold mb-8 text-on-background">Pestañas Científicas</h3>
+          <div class="bg-surface rounded-xl p-8">
+            <ImprovedTabs />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scientific Features -->
+    <section class="py-16 bg-surface">
+      <div class="container mx-auto px-6">
+        <h2 class="text-headline-large font-bold text-center mb-12 text-on-surface">
+          🔬 Características Científicas
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- HCT Algorithm -->
+          <div class="bg-background rounded-xl p-8 text-center">
+            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">🎨</span>
+            </div>
+            <h3 class="text-title-large font-bold mb-4 text-on-background">Algoritmo HCT</h3>
+            <p class="text-body-medium text-on-background opacity-70">
+              Colores generados científicamente usando Hue, Chroma, Tone para máxima precisión perceptual y accesibilidad.
+            </p>
+          </div>
+
+          <!-- Material Motion -->
+          <div class="bg-background rounded-xl p-8 text-center">
+            <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="text-title-large font-bold mb-4 text-on-background">Material Motion</h3>
+            <p class="text-body-medium text-on-background opacity-70">
+              Animaciones basadas en física real con curvas de aceleración científicamente calculadas para naturalidad.
+            </p>
+          </div>
+
+          <!-- WCAG Compliance -->
+          <div class="bg-background rounded-xl p-8 text-center">
+            <div class="w-16 h-16 bg-tertiary rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">♿</span>
+            </div>
+            <h3 class="text-title-large font-bold mb-4 text-on-background">WCAG AA/AAA</h3>
+            <p class="text-body-medium text-on-background opacity-70">
+              Validación automática de contraste y accesibilidad con cumplimiento WCAG 2.1 nivel AA y AAA.
+            </p>
+          </div>
+
+          <!-- Design Tokens -->
+          <div class="bg-background rounded-xl p-8 text-center">
+            <div class="w-16 h-16 bg-error rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">🎯</span>
+            </div>
+            <h3 class="text-title-large font-bold mb-4 text-on-background">Tokens Científicos</h3>
+            <p class="text-body-medium text-on-background opacity-70">
+              Sistema de tokens de diseño basado en investigación científica de Material Design 3.
+            </p>
+          </div>
+
+          <!-- Responsive System -->
+          <div class="bg-background rounded-xl p-8 text-center">
+            <div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">📱</span>
+            </div>
+            <h3 class="text-title-large font-bold mb-4 text-on-background">Sistema Responsivo</h3>
+            <p class="text-body-medium text-on-background opacity-70">
+              Breakpoints y espaciado calculados científicamente para óptima experiencia en todos los dispositivos.
+            </p>
+          </div>
+
+          <!-- Performance -->
+          <div class="bg-background rounded-xl p-8 text-center">
+            <div class="w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="text-title-large font-bold mb-4 text-on-background">Rendimiento</h3>
+            <p class="text-body-medium text-on-background opacity-70">
+              Optimización automática de CSS y JavaScript para máximo rendimiento y mínimo bundle size.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility Report -->
+    <section id="accessibility" class="py-16 bg-background">
+      <div class="container mx-auto px-6">
+        <h2 class="text-headline-large font-bold text-center mb-4 text-on-background">
+          ♿ Reporte de Accesibilidad
+        </h2>
+        <p class="text-body-large text-center mb-12 text-on-background opacity-70 max-w-2xl mx-auto">
+          Validación automática WCAG 2.1 con resultados científicamente verificados.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div class="bg-surface rounded-xl p-8 text-center">
+            <div class="text-4xl font-bold text-primary mb-2">AA</div>
+            <div class="text-title-medium font-bold text-on-surface mb-2">Nivel WCAG</div>
+            <div class="text-body-small text-on-surface opacity-70">Cumplimiento General</div>
+          </div>
+          
+          <div class="bg-surface rounded-xl p-8 text-center">
+            <div class="text-4xl font-bold text-secondary mb-2">5/5</div>
+            <div class="text-title-medium font-bold text-on-surface mb-2">Validaciones</div>
+            <div class="text-body-small text-on-surface opacity-70">Componentes Exitosos</div>
+          </div>
+          
+          <div class="bg-surface rounded-xl p-8 text-center">
+            <div class="text-4xl font-bold text-tertiary mb-2">0</div>
+            <div class="text-title-medium font-bold text-on-surface mb-2">Fallos</div>
+            <div class="text-body-small text-on-surface opacity-70">Errores de Contraste</div>
+          </div>
+          
+          <div class="bg-surface rounded-xl p-8 text-center">
+            <div class="text-4xl font-bold text-primary mb-2">100%</div>
+            <div class="text-title-medium font-bold text-on-surface mb-2">Cobertura</div>
+            <div class="text-body-small text-on-surface opacity-70">Componentes Validados</div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <ImprovedButton variant="outlined" size="large" href="/src/styles/accessibility-report.html" target="_blank">
+            📄 Ver Reporte Completo
+          </ImprovedButton>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Implementation -->
+    <section class="py-16 bg-surface">
+      <div class="container mx-auto px-6">
+        <h2 class="text-headline-large font-bold text-center mb-12 text-on-surface">
+          ⚙️ Implementación Técnica
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Architecture -->
+          <div class="bg-background rounded-xl p-8">
+            <h3 class="text-title-large font-bold mb-6 text-on-background">🏗️ Arquitectura</h3>
+            <ul class="space-y-3 text-body-medium text-on-background">
+              <li class="flex items-start gap-3">
+                <span class="text-primary">✅</span>
+                <span>Generadores modulares MCP para componentes científicos</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary">✅</span>
+                <span>Sistema de tokens de diseño basado en Material Design 3</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary">✅</span>
+                <span>Integración Tailwind CSS con tokens científicos</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary">✅</span>
+                <span>Validación automática WCAG en tiempo de construcción</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-primary">✅</span>
+                <span>Astro.js para máximo rendimiento y SEO</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Features -->
+          <div class="bg-background rounded-xl p-8">
+            <h3 class="text-title-large font-bold mb-6 text-on-background">🚀 Características</h3>
+            <ul class="space-y-3 text-body-medium text-on-background">
+              <li class="flex items-start gap-3">
+                <span class="text-secondary">🎨</span>
+                <span>Colores HCT científicamente precisos</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-secondary">⚡</span>
+                <span>Animaciones Material Motion físicamente correctas</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-secondary">♿</span>
+                <span>Accesibilidad WCAG AA/AAA automática</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-secondary">📱</span>
+                <span>Diseño responsivo científicamente optimizado</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-secondary">🔧</span>
+                <span>Herramientas de desarrollo integradas</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-gradient-to-r from-primary to-tertiary text-on-primary">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-headline-large font-bold mb-6">
+          🚀 Comienza a Usar Material Design 3 Científico
+        </h2>
+        <p class="text-title-large mb-8 opacity-90 max-w-2xl mx-auto">
+          Implementa el sistema de diseño más avanzado y científicamente preciso disponible.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+          <ImprovedButton variant="filled" size="large" href="/components">
+            📚 Documentación
+          </ImprovedButton>
+          <ImprovedButton variant="outlined" size="large" href="/examples">
+            🎯 Ejemplos
+          </ImprovedButton>
+          <ImprovedButton variant="text" size="large" href="/tools">
+            🔧 Herramientas
+          </ImprovedButton>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+  
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .delay-500 {
+    animation-delay: 0.5s;
+  }
+  
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+</style>

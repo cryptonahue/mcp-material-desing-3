@@ -1,0 +1,428 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+
+// Datos de las herramientas MCP
+const tools = [
+  {
+    name: 'generate_component',
+    description: 'Genera código de componentes Material Design 3 con múltiples frameworks',
+    category: 'Generación',
+    status: 'stable',
+    parameters: [
+      { name: 'type', type: 'string', required: true, description: 'Tipo de componente (button, card, textfield, etc.)' },
+      { name: 'variant', type: 'string', required: false, description: 'Variante del componente (filled, outlined, etc.)' },
+      { name: 'props', type: 'object', required: false, description: 'Propiedades específicas del componente' },
+      { name: 'content', type: 'string', required: false, description: 'Contenido a incluir en el componente' },
+      { name: 'includeJS', type: 'boolean', required: false, description: 'Incluir comportamiento JavaScript' },
+      { name: 'framework', type: 'string', required: false, description: 'Framework JS (css-only, alpine, vanilla-js)' }
+    ],
+    example: `{
+  type: "button",
+  variant: "filled",
+  props: {
+    text: "Guardar Cambios",
+    icon: "leading",
+    iconName: "save",
+    size: "medium"
+  },
+  framework: "alpine"
+}`,
+    output: 'Objeto con html, css y js (opcional) del componente generado'
+  },
+  {
+    name: 'generate_theme',
+    description: 'Genera temas Material Design 3 completos usando algoritmo científico HCT',
+    category: 'Temas',
+    status: 'stable',
+    parameters: [
+      { name: 'seedColor', type: 'string', required: true, description: 'Color base en formato hex (ej: "#6750A4")' },
+      { name: 'name', type: 'string', required: false, description: 'Nombre del tema' },
+      { name: 'darkMode', type: 'boolean', required: false, description: 'Generar variante de modo oscuro' },
+      { name: 'outputFormat', type: 'string', required: false, description: 'Formato de salida: css, tailwind, o both' },
+      { name: 'includeUtilities', type: 'boolean', required: false, description: 'Incluir clases de utilidad' }
+    ],
+    example: `{
+  seedColor: "#FF5722",
+  name: "orange-theme",
+  darkMode: true,
+  outputFormat: "both",
+  includeUtilities: true
+}`,
+    output: 'CSS y/o configuración Tailwind con paleta de colores científicamente generada'
+  },
+  {
+    name: 'search_icons',
+    description: 'Busca iconos Material Design con filtros avanzados',
+    category: 'Recursos',
+    status: 'stable',
+    parameters: [
+      { name: 'query', type: 'string', required: true, description: 'Término de búsqueda' },
+      { name: 'category', type: 'string', required: false, description: 'Categoría de iconos (action, communication, etc.)' },
+      { name: 'style', type: 'string', required: false, description: 'Estilo del icono (filled, outlined, etc.)' },
+      { name: 'size', type: 'number', required: false, description: 'Tamaño del icono en píxeles' }
+    ],
+    example: `{
+  query: "home",
+  category: "action",
+  style: "filled",
+  size: 24
+}`,
+    output: 'Lista de iconos coincidentes con nombres, categorías y código SVG'
+  },
+  {
+    name: 'create_layout',
+    description: 'Genera layouts completos con componentes Material organizados',
+    category: 'Layout',
+    status: 'beta',
+    parameters: [
+      { name: 'type', type: 'string', required: true, description: 'Tipo de layout (page, section, grid, flex)' },
+      { name: 'components', type: 'array', required: false, description: 'Array de nombres de componentes a incluir' },
+      { name: 'responsive', type: 'boolean', required: false, description: 'Habilitar diseño responsivo' },
+      { name: 'theme', type: 'string', required: false, description: 'Tema a aplicar' }
+    ],
+    example: `{
+  type: "page",
+  components: ["button", "card", "textfield"],
+  responsive: true,
+  theme: "orange-theme"
+}`,
+    output: 'HTML completo con layout responsivo y componentes integrados'
+  },
+  {
+    name: 'get_component_info',
+    description: 'Obtiene información detallada sobre un componente específico',
+    category: 'Información',
+    status: 'stable',
+    parameters: [
+      { name: 'component', type: 'string', required: true, description: 'Nombre del componente a consultar' }
+    ],
+    example: `{
+  component: "button"
+}`,
+    output: 'Información completa: descripción, variantes, props, ejemplos y características'
+  },
+  {
+    name: 'get_version',
+    description: 'Obtiene información de versión y capacidades del MCP',
+    category: 'Sistema',
+    status: 'stable',
+    parameters: [],
+    example: `{
+  // Sin parámetros requeridos
+}`,
+    output: 'Versión, características habilitadas, dependencias y changelog'
+  }
+];
+
+function getStatusColor(status: string) {
+  switch (status) {
+    case 'stable': return 'bg-green-100 text-green-800';
+    case 'beta': return 'bg-yellow-100 text-yellow-800';
+    case 'alpha': return 'bg-red-100 text-red-800';
+    default: return 'bg-gray-100 text-gray-800';
+  }
+}
+
+function getCategoryColor(category: string) {
+  switch (category) {
+    case 'Generación': return 'bg-blue-100 text-blue-800';
+    case 'Temas': return 'bg-purple-100 text-purple-800';
+    case 'Recursos': return 'bg-green-100 text-green-800';
+    case 'Layout': return 'bg-orange-100 text-orange-800';
+    case 'Información': return 'bg-indigo-100 text-indigo-800';
+    case 'Sistema': return 'bg-gray-100 text-gray-800';
+    default: return 'bg-gray-100 text-gray-800';
+  }
+}
+---
+
+<Layout title="Herramientas MCP - Material Tailwind MCP">
+  <!-- Header -->
+  <section class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          Herramientas MCP
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          6 herramientas poderosas para generar componentes, temas, buscar iconos y crear layouts completos
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Stats -->
+  <section class="bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl font-bold text-blue-600">6</div>
+          <div class="text-sm text-gray-600">Herramientas</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-green-600">5</div>
+          <div class="text-sm text-gray-600">Estables</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-purple-600">HCT</div>
+          <div class="text-sm text-gray-600">Algoritmo Científico</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-orange-600">MCP</div>
+          <div class="text-sm text-gray-600">Protocolo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Grid -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8">
+        {tools.map((tool) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <!-- Tool Header -->
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {tool.name}
+                </h3>
+                <div class="flex gap-2 mb-3">
+                  <span class={`px-2 py-1 text-xs font-medium rounded-full ${getCategoryColor(tool.category)}`}>
+                    {tool.category}
+                  </span>
+                  <span class={`px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(tool.status)}`}>
+                    {tool.status}
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <p class="text-gray-600 mb-6">
+              {tool.description}
+            </p>
+            
+            <!-- Parameters -->
+            {tool.parameters.length > 0 && (
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-gray-900 mb-3">Parámetros:</h4>
+                <div class="space-y-2">
+                  {tool.parameters.map((param) => (
+                    <div class="flex items-start gap-3 text-sm">
+                      <span class={`px-2 py-1 rounded text-xs font-mono ${
+                        param.required 
+                          ? 'bg-red-100 text-red-800' 
+                          : 'bg-gray-100 text-gray-600'
+                      }`}>
+                        {param.name}
+                      </span>
+                      <div class="flex-1">
+                        <span class="text-gray-500 text-xs">{param.type}</span>
+                        <p class="text-gray-600">{param.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <!-- Example -->
+            <div class="mb-4">
+              <h4 class="text-sm font-semibold text-gray-900 mb-3">Ejemplo de uso:</h4>
+              <CodeBlock 
+                code={tool.example}
+                language="typescript"
+                showCopy={true}
+              />
+            </div>
+            
+            <!-- Output -->
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <h4 class="text-sm font-semibold text-gray-900 mb-2">Salida:</h4>
+              <p class="text-sm text-gray-600">{tool.output}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Integration Guide -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Guía de Integración
+        </h2>
+        <p class="text-lg text-gray-600">
+          Cómo usar las herramientas MCP en tu proyecto
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- MCP Client Setup -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            1. Configuración del Cliente MCP
+          </h3>
+          <CodeBlock 
+            code={`import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+
+// Crear cliente MCP
+const transport = new StdioClientTransport({
+  command: 'material-tailwind-mcp',
+  args: []
+});
+
+const client = new Client({
+  name: 'material-tailwind-client',
+  version: '1.0.0'
+}, {
+  capabilities: {}
+});
+
+await client.connect(transport);`}
+            language="typescript"
+            title="Cliente MCP"
+          />
+        </div>
+        
+        <!-- Tool Usage -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            2. Uso de Herramientas
+          </h3>
+          <CodeBlock 
+            code={`// Llamar herramienta MCP
+const result = await client.request({
+  method: "tools/call",
+  params: {
+    name: "generate_component",
+    arguments: {
+      type: "button",
+      variant: "filled",
+      props: {
+        text: "Mi Botón",
+        icon: "leading",
+        iconName: "star"
+      }
+    }
+  }
+});
+
+console.log(result.content);`}
+            language="typescript"
+            title="Llamada a Herramienta"
+          />
+        </div>
+        
+        <!-- Claude Integration -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            3. Integración con Claude
+          </h3>
+          <CodeBlock 
+            code={`// En claude_desktop_config.json
+{
+  "mcpServers": {
+    "material-tailwind": {
+      "command": "npx",
+      "args": ["material-tailwind-mcp"]
+    }
+  }
+}
+
+// Luego en Claude:
+// "Genera un botón Material Design 3 con icono"
+// Claude usará automáticamente las herramientas MCP`}
+            language="json"
+            title="Configuración Claude"
+          />
+        </div>
+        
+        <!-- Response Handling -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-4">
+            4. Manejo de Respuestas
+          </h3>
+          <CodeBlock 
+            code={`// Procesar respuesta de componente
+const { html, css, js } = result.content[0].text;
+
+// Insertar en tu aplicación
+document.getElementById('component-container').innerHTML = html;
+
+// Añadir estilos
+const style = document.createElement('style');
+style.textContent = css;
+document.head.appendChild(style);
+
+// Ejecutar JavaScript si existe
+if (js) {
+  eval(js);
+}`}
+            language="typescript"
+            title="Procesamiento"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Best Practices -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Mejores Prácticas
+        </h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+            Validación de Entrada
+          </h3>
+          <p class="text-gray-600 text-sm">
+            Siempre valida los parámetros antes de llamar las herramientas MCP para evitar errores.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+            Cache de Resultados
+          </h3>
+          <p class="text-gray-600 text-sm">
+            Cachea los componentes generados para mejorar el rendimiento en tu aplicación.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+            Temas Consistentes
+          </h3>
+          <p class="text-gray-600 text-sm">
+            Usa generate_theme para crear paletas consistentes en toda tu aplicación.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,430 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Layout title="Input Components - Material Design 3 Components">
+	<main class="min-h-screen bg-surface p-6">
+		<div class="max-w-7xl mx-auto">
+			<!-- Header -->
+			<header class="mb-8">
+				<nav class="mb-4">
+					<a href="/components" class="text-primary hover:text-primary-variant inline-flex items-center gap-2">
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+						</svg>
+						Back to Components
+					</a>
+				</nav>
+				<h1 class="text-4xl font-bold text-on-surface mb-4">Input Components</h1>
+				<p class="text-lg text-on-surface-variant mb-8">Material Design 3 input components for user interaction</p>
+			</header>
+
+			<!-- Text Fields -->
+			<Card variant="elevated" class="p-6 mb-12">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Text Fields</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- Filled Text Fields -->
+					<div class="space-y-6">
+						<h4 class="text-lg font-medium text-on-surface mb-4">Filled</h4>
+						
+						<!-- Standard Filled -->
+						<div class="relative">
+							<input type="text" id="filled-input" class="w-full px-4 pt-6 pb-2 bg-surface-container-highest rounded-t-lg border-b-2 border-primary focus:outline-none focus:border-primary-variant transition-colors" placeholder=" " />
+							<label for="filled-input" class="absolute left-4 top-2 text-xs text-primary font-medium">Label</label>
+							<div class="text-xs text-on-surface-variant mt-1 px-4">Supporting text</div>
+						</div>
+
+						<!-- Filled with Icon -->
+						<div class="relative">
+							<div class="absolute left-4 top-4 text-on-surface-variant">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+								</svg>
+							</div>
+							<input type="text" id="filled-icon" class="w-full pl-12 pr-4 pt-6 pb-2 bg-surface-container-highest rounded-t-lg border-b-2 border-outline focus:border-primary focus:outline-none transition-colors" placeholder=" " />
+							<label for="filled-icon" class="absolute left-12 top-2 text-xs text-on-surface-variant font-medium">Search</label>
+						</div>
+
+						<!-- Error State -->
+						<div class="relative">
+							<input type="email" id="filled-error" class="w-full px-4 pt-6 pb-2 bg-surface-container-highest rounded-t-lg border-b-2 border-error focus:outline-none focus:border-error transition-colors" placeholder=" " value="invalid-email" />
+							<label for="filled-error" class="absolute left-4 top-2 text-xs text-error font-medium">Email</label>
+							<div class="text-xs text-error mt-1 px-4 flex items-center gap-1">
+								<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+								</svg>
+								Please enter a valid email address
+							</div>
+						</div>
+					</div>
+
+					<!-- Outlined Text Fields -->
+					<div class="space-y-6">
+						<h4 class="text-lg font-medium text-on-surface mb-4">Outlined</h4>
+						
+						<!-- Standard Outlined -->
+						<div class="relative">
+							<input type="text" id="outlined-input" class="w-full px-4 py-3 border-2 border-outline rounded-lg focus:border-primary focus:outline-none transition-colors" placeholder=" " />
+							<label for="outlined-input" class="absolute left-3 -top-2 px-1 bg-surface text-xs text-on-surface-variant font-medium">Label</label>
+							<div class="text-xs text-on-surface-variant mt-1">Supporting text</div>
+						</div>
+
+						<!-- Outlined with Trailing Icon -->
+						<div class="relative">
+							<input type="password" id="outlined-password" class="w-full pl-4 pr-12 py-3 border-2 border-outline rounded-lg focus:border-primary focus:outline-none transition-colors" placeholder=" " />
+							<label for="outlined-password" class="absolute left-3 -top-2 px-1 bg-surface text-xs text-on-surface-variant font-medium">Password</label>
+							<button class="absolute right-3 top-3 text-on-surface-variant hover:text-on-surface transition-colors">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+								</svg>
+							</button>
+						</div>
+
+						<!-- Disabled State -->
+						<div class="relative">
+							<input type="text" id="outlined-disabled" class="w-full px-4 py-3 border-2 border-outline rounded-lg bg-surface-container opacity-60 cursor-not-allowed" placeholder=" " disabled value="Disabled input" />
+							<label for="outlined-disabled" class="absolute left-3 -top-2 px-1 bg-surface text-xs text-on-surface-variant font-medium opacity-60">Disabled</label>
+						</div>
+					</div>
+				</div>
+
+				<!-- Text Area -->
+				<div class="mt-8">
+					<h4 class="text-lg font-medium text-on-surface mb-4">Text Area</h4>
+					<div class="relative max-w-md">
+						<textarea id="textarea" rows="4" class="w-full px-4 py-3 border-2 border-outline rounded-lg focus:border-primary focus:outline-none transition-colors resize-none" placeholder=" "></textarea>
+						<label for="textarea" class="absolute left-3 -top-2 px-1 bg-surface text-xs text-on-surface-variant font-medium">Message</label>
+						<div class="text-xs text-on-surface-variant mt-1">Enter your message here</div>
+					</div>
+				</div>
+			</Card>
+
+			<!-- Chips -->
+			<Card variant="elevated" class="p-6 mb-12">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Chips</h3>
+				<div class="space-y-8">
+					<!-- Assist Chips -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Assist Chips</h4>
+						<div class="flex flex-wrap gap-2">
+							<button class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-2">
+								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0V3a2 2 0 012-2h4a2 2 0 012 2v4"></path>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"></path>
+								</svg>
+								Weather
+							</button>
+							<button class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-2">
+								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+								</svg>
+								Restaurants
+							</button>
+							<button class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-2">
+								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+								</svg>
+								Schedule
+							</button>
+						</div>
+					</div>
+
+					<!-- Filter Chips -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Filter Chips</h4>
+						<div class="flex flex-wrap gap-2">
+							<button class="px-4 py-2 bg-secondary-container border border-secondary rounded-full text-on-secondary-container transition-colors flex items-center gap-2">
+								<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+								</svg>
+								Selected
+							</button>
+							<button class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface hover:bg-surface-container-high transition-colors">
+								Category 1
+							</button>
+							<button class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface hover:bg-surface-container-high transition-colors">
+								Category 2
+							</button>
+							<button class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface hover:bg-surface-container-high transition-colors">
+								Category 3
+							</button>
+						</div>
+					</div>
+
+					<!-- Input Chips -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Input Chips</h4>
+						<div class="flex flex-wrap gap-2">
+							<span class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface flex items-center gap-2">
+								<span class="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-on-primary text-xs font-bold">JD</span>
+								John Doe
+								<button class="w-4 h-4 text-on-surface-variant hover:text-on-surface transition-colors">
+									<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+									</svg>
+								</button>
+							</span>
+							<span class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface flex items-center gap-2">
+								React
+								<button class="w-4 h-4 text-on-surface-variant hover:text-on-surface transition-colors">
+									<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+									</svg>
+								</button>
+							</span>
+							<span class="px-4 py-2 bg-surface-container border border-outline rounded-full text-on-surface flex items-center gap-2">
+								Tailwind CSS
+								<button class="w-4 h-4 text-on-surface-variant hover:text-on-surface transition-colors">
+									<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+									</svg>
+								</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</Card>
+
+			<!-- Selection Controls -->
+			<Card variant="elevated" class="p-6 mb-12">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Selection Controls</h3>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Switches -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Switches</h4>
+						<div class="space-y-4">
+							<label class="flex items-center gap-3 cursor-pointer">
+								<div class="relative">
+									<input type="checkbox" class="sr-only peer" checked />
+									<div class="w-12 h-6 bg-primary rounded-full peer-focus:ring-2 peer-focus:ring-primary-container transition-all"></div>
+									<div class="absolute left-1 top-1 w-4 h-4 bg-on-primary rounded-full transition-transform peer-checked:translate-x-6"></div>
+								</div>
+								<span class="text-on-surface">Enabled</span>
+							</label>
+
+							<label class="flex items-center gap-3 cursor-pointer">
+								<div class="relative">
+									<input type="checkbox" class="sr-only peer" />
+									<div class="w-12 h-6 bg-surface-container-highest border-2 border-outline rounded-full peer-focus:ring-2 peer-focus:ring-primary-container peer-checked:bg-primary peer-checked:border-primary transition-all"></div>
+									<div class="absolute left-1 top-1 w-4 h-4 bg-outline rounded-full transition-all peer-checked:translate-x-6 peer-checked:bg-on-primary"></div>
+								</div>
+								<span class="text-on-surface">Disabled</span>
+							</label>
+
+							<label class="flex items-center gap-3 cursor-not-allowed opacity-60">
+								<div class="relative">
+									<input type="checkbox" class="sr-only peer" disabled />
+									<div class="w-12 h-6 bg-surface-container-highest border-2 border-outline rounded-full"></div>
+									<div class="absolute left-1 top-1 w-4 h-4 bg-outline rounded-full"></div>
+								</div>
+								<span class="text-on-surface">Disabled State</span>
+							</label>
+						</div>
+					</div>
+
+					<!-- Checkboxes -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Checkboxes</h4>
+						<div class="space-y-4">
+							<label class="flex items-center gap-3 cursor-pointer">
+								<div class="relative">
+									<input type="checkbox" class="sr-only peer" checked />
+									<div class="w-5 h-5 bg-primary border-2 border-primary rounded peer-focus:ring-2 peer-focus:ring-primary-container transition-all flex items-center justify-center">
+										<svg class="w-3 h-3 text-on-primary" fill="currentColor" viewBox="0 0 20 20">
+											<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+										</svg>
+									</div>
+								</div>
+								<span class="text-on-surface">Checked</span>
+							</label>
+
+							<label class="flex items-center gap-3 cursor-pointer">
+								<div class="relative">
+									<input type="checkbox" class="sr-only peer" />
+									<div class="w-5 h-5 bg-surface border-2 border-outline rounded peer-focus:ring-2 peer-focus:ring-primary-container peer-checked:bg-primary peer-checked:border-primary transition-all"></div>
+								</div>
+								<span class="text-on-surface">Unchecked</span>
+							</label>
+
+							<label class="flex items-center gap-3 cursor-pointer">
+								<div class="relative">
+									<input type="checkbox" class="sr-only peer" />
+									<div class="w-5 h-5 bg-primary border-2 border-primary rounded peer-focus:ring-2 peer-focus:ring-primary-container transition-all flex items-center justify-center">
+										<div class="w-2 h-0.5 bg-on-primary"></div>
+									</div>
+								</div>
+								<span class="text-on-surface">Indeterminate</span>
+							</label>
+						</div>
+					</div>
+
+					<!-- Radio Buttons -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Radio Buttons</h4>
+						<div class="space-y-4">
+							<label class="flex items-center gap-3 cursor-pointer">
+								<div class="relative">
+									<input type="radio" name="radio-group" class="sr-only peer" checked />
+									<div class="w-5 h-5 bg-surface border-2 border-primary rounded-full peer-focus:ring-2 peer-focus:ring-primary-container transition-all flex items-center justify-center">
+										<div class="w-2 h-2 bg-primary rounded-full"></div>
+									</div>
+								</div>
+								<span class="text-on-surface">Option 1</span>
+							</label>
+
+							<label class="flex items-center gap-3 cursor-pointer">
+								<div class="relative">
+									<input type="radio" name="radio-group" class="sr-only peer" />
+									<div class="w-5 h-5 bg-surface border-2 border-outline rounded-full peer-focus:ring-2 peer-focus:ring-primary-container peer-checked:border-primary transition-all"></div>
+								</div>
+								<span class="text-on-surface">Option 2</span>
+							</label>
+
+							<label class="flex items-center gap-3 cursor-pointer">
+								<div class="relative">
+									<input type="radio" name="radio-group" class="sr-only peer" />
+									<div class="w-5 h-5 bg-surface border-2 border-outline rounded-full peer-focus:ring-2 peer-focus:ring-primary-container peer-checked:border-primary transition-all"></div>
+								</div>
+								<span class="text-on-surface">Option 3</span>
+							</label>
+						</div>
+					</div>
+				</div>
+			</Card>
+
+			<!-- Sliders -->
+			<Card variant="elevated" class="p-6 mb-12">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Sliders</h3>
+				<div class="space-y-8">
+					<!-- Continuous Slider -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Continuous</h4>
+						<div class="max-w-md">
+							<label class="block text-sm text-on-surface-variant mb-2">Volume</label>
+							<div class="relative">
+								<input type="range" min="0" max="100" value="60" class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer slider" />
+								<style>
+									.slider::-webkit-slider-thumb {
+										appearance: none;
+										height: 20px;
+										width: 20px;
+										border-radius: 50%;
+										background: #6750A4;
+										cursor: pointer;
+										border: 2px solid #FFFFFF;
+										box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+									}
+									.slider::-moz-range-thumb {
+										height: 20px;
+										width: 20px;
+										border-radius: 50%;
+										background: #6750A4;
+										cursor: pointer;
+										border: 2px solid #FFFFFF;
+										box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+									}
+								</style>
+							</div>
+							<div class="flex justify-between text-xs text-on-surface-variant mt-1">
+								<span>0</span>
+								<span>100</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Discrete Slider -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Discrete</h4>
+						<div class="max-w-md">
+							<label class="block text-sm text-on-surface-variant mb-2">Temperature</label>
+							<div class="relative">
+								<input type="range" min="16" max="30" value="22" step="1" class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer slider" />
+								<div class="flex justify-between text-xs text-on-surface-variant mt-1">
+									<span>16°C</span>
+									<span>30°C</span>
+								</div>
+								<div class="text-center mt-2">
+									<span class="text-sm font-medium text-on-surface">22°C</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Range Slider -->
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Range</h4>
+						<div class="max-w-md">
+							<label class="block text-sm text-on-surface-variant mb-2">Price Range</label>
+							<div class="relative">
+								<div class="flex gap-4 items-center">
+									<input type="range" min="0" max="1000" value="200" class="flex-1 h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer slider" />
+									<span class="text-sm text-on-surface-variant">to</span>
+									<input type="range" min="0" max="1000" value="800" class="flex-1 h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer slider" />
+								</div>
+								<div class="flex justify-between text-xs text-on-surface-variant mt-1">
+									<span>$0</span>
+									<span>$1000</span>
+								</div>
+								<div class="text-center mt-2">
+									<span class="text-sm font-medium text-on-surface">$200 - $800</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</Card>
+
+			<!-- Usage Guidelines -->
+			<Card variant="outlined" class="p-6">
+				<h3 class="text-2xl font-semibold text-on-surface mb-6">Usage Guidelines</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">When to Use</h4>
+						<ul class="space-y-2 text-on-surface-variant">
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Text Fields:</strong> For collecting user input like names, emails, messages</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Chips:</strong> For tags, filters, or compact selections</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Switches:</strong> For binary on/off settings</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span><strong>Sliders:</strong> For selecting values from a range</span>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-lg font-medium text-on-surface mb-4">Best Practices</h4>
+						<ul class="space-y-2 text-on-surface-variant">
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Provide clear labels and helpful supporting text</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Show validation states clearly with appropriate colors</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Group related inputs logically</span>
+							</li>
+							<li class="flex items-start gap-2">
+								<span class="text-primary mt-1">•</span>
+								<span>Ensure adequate spacing for touch interactions</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</Card>
+		</div>
+	</main>
+</Layout>

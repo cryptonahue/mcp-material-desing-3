@@ -1,0 +1,209 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import FAB from '../components/FAB.astro';
+---
+
+<Layout title="Material Tailwind MCP - Documentación">
+  <!-- Hero Section -->
+  <section class="md-surface-container py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="md-display-large mb-6">
+          Material Tailwind <span class="text-md-primary">MCP</span>
+        </h1>
+        <p class="md-body-large text-md-on-surface-variant mb-8 max-w-3xl mx-auto">
+          Servidor MCP para generar componentes Material Design 3 con Tailwind CSS. 
+          Crea interfaces modernas y accesibles con algoritmos científicos de color.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="filled" size="large" href="/components">
+            Ver Componentes
+          </Button>
+          <Button variant="outlined" size="large" href="/tools">
+            Explorar Herramientas
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="md-headline-large mb-4">
+          Características Principales
+        </h2>
+        <p class="md-body-large text-md-on-surface-variant max-w-2xl mx-auto">
+          Todo lo que necesitas para crear interfaces Material Design 3 perfectas
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <Card variant="elevated" interactive={true}>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-md-primary-container rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-md-on-primary-container" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+              </svg>
+            </div>
+            <h3 class="md-title-large mb-2">
+              Algoritmo Científico HCT
+            </h3>
+            <p class="md-body-medium text-md-on-surface-variant">
+              Usa @material/material-color-utilities oficial para generación perceptualmente uniforme de colores.
+            </p>
+          </div>
+        </Card>
+        
+        <!-- Feature 2 -->
+        <Card variant="elevated" interactive={true}>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-md-secondary-container rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-md-on-secondary-container" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="md-title-large mb-2">
+              25+ Componentes
+            </h3>
+            <p class="md-body-medium text-md-on-surface-variant">
+              Biblioteca completa de componentes Material Design 3 listos para usar con múltiples variantes.
+            </p>
+          </div>
+        </Card>
+        
+        <!-- Feature 3 -->
+        <Card variant="elevated" interactive={true}>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-md-tertiary-container rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-md-on-tertiary-container" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="md-title-large mb-2">
+              Múltiples Frameworks
+            </h3>
+            <p class="md-body-medium text-md-on-surface-variant">
+              Soporte para CSS-only, Alpine.js y Vanilla JavaScript según tus necesidades.
+            </p>
+          </div>
+        </Card>
+        
+        <!-- Feature 4 -->
+        <Card variant="elevated" interactive={true}>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-md-primary-container rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-md-on-primary-container" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+              </svg>
+            </div>
+            <h3 class="md-title-large mb-2">
+              Dark Mode
+            </h3>
+            <p class="md-body-medium text-md-on-surface-variant">
+              Variables CSS científicamente correctas con transiciones suaves y persistencia automática.
+            </p>
+          </div>
+        </Card>
+        
+        <!-- Feature 5 -->
+        <Card variant="elevated" interactive={true}>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-md-secondary-container rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-md-on-secondary-container" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="md-title-large mb-2">
+              Accesibilidad
+            </h3>
+            <p class="md-body-medium text-md-on-surface-variant">
+              ARIA labels completos, navegación por teclado y contrast ratios WCAG incluidos por defecto.
+            </p>
+          </div>
+        </Card>
+        
+        <!-- Feature 6 -->
+        <Card variant="elevated" interactive={true}>
+          <div class="p-6">
+            <div class="w-12 h-12 bg-md-tertiary-container rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-md-on-tertiary-container" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="md-title-large mb-2">
+              API Completa
+            </h3>
+            <p class="md-body-medium text-md-on-surface-variant">
+              6 herramientas MCP para generar componentes, temas, buscar iconos y crear layouts completos.
+            </p>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Start Section -->
+  <section class="md-surface-container-low py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="md-headline-large mb-4">
+          Inicio Rápido
+        </h2>
+        <p class="md-body-large text-md-on-surface-variant max-w-2xl mx-auto">
+          Comienza a usar Material Tailwind MCP en minutos
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Installation -->
+        <div>
+          <h3 class="md-title-large mb-4">
+            1. Instalación
+          </h3>
+          <CodeBlock 
+            code={`npm install material-tailwind-mcp
+
+# O usando el MCP directamente
+npx @modelcontextprotocol/cli install material-tailwind-mcp`}
+            language="bash"
+            title="Terminal"
+          />
+        </div>
+        
+        <!-- Usage Example -->
+        <div>
+          <h3 class="md-title-large mb-4">
+            2. Uso Básico
+          </h3>
+          <CodeBlock 
+            code={`// Generar un botón Material Design 3
+const button = await mcp.generateComponent({
+  type: "button",
+  variant: "filled",
+  props: {
+    text: "Hola Mundo",
+    icon: "leading",
+    iconName: "star"
+  }
+});`}
+            language="typescript"
+            title="JavaScript"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Floating Action Button -->
+  <FAB variant="primary" size="medium" aria-label="Ir arriba">
+    <svg slot="icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </FAB>
+</Layout>

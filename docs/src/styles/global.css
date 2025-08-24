@@ -1,0 +1,635 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* Import Scientific Material Design 3 Theme (HCT Generated) */
+@import './material-theme.css';
+@import './design-tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Additional Material Design 3 System Color Assignments */
+:root {
+  /* Primary System Colors */
+  --md-primary: var(--md-sys-color-primary);
+  --md-on-primary: var(--md-sys-color-on-primary);
+  --md-primary-container: var(--md-sys-color-primary-container);
+  --md-on-primary-container: var(--md-sys-color-on-primary-container);
+  
+  /* Secondary System Colors */
+  --md-secondary: var(--md-sys-color-secondary);
+  --md-on-secondary: var(--md-sys-color-on-secondary);
+  --md-secondary-container: var(--md-sys-color-secondary-container);
+  --md-on-secondary-container: var(--md-sys-color-on-secondary-container);
+  
+  /* Tertiary System Colors */
+  --md-tertiary: var(--md-sys-color-tertiary);
+  --md-on-tertiary: var(--md-sys-color-on-tertiary);
+  --md-tertiary-container: var(--md-sys-color-tertiary-container);
+  --md-on-tertiary-container: var(--md-sys-color-on-tertiary-container);
+  
+  /* Error System Colors */
+  --md-error: var(--md-sys-color-error);
+  --md-on-error: var(--md-sys-color-on-error);
+  --md-error-container: var(--md-sys-color-error-container);
+  --md-on-error-container: var(--md-sys-color-on-error-container);
+  
+  /* Surface System Colors */
+  --md-surface: var(--md-sys-color-surface);
+  --md-on-surface: var(--md-sys-color-on-surface);
+  --md-surface-variant: var(--md-sys-color-surface-variant);
+  --md-on-surface-variant: var(--md-sys-color-on-surface-variant);
+  
+  /* Background System Colors */
+  --md-background: var(--md-sys-color-background);
+  --md-on-background: var(--md-sys-color-on-background);
+  
+  /* Outline System Colors */
+  --md-outline: var(--md-sys-color-outline);
+  --md-outline-variant: var(--md-sys-color-outline-variant);
+  
+  /* Inverse System Colors */
+  --md-inverse-surface: var(--md-sys-color-inverse-surface);
+  --md-inverse-on-surface: var(--md-sys-color-inverse-on-surface);
+  --md-inverse-primary: var(--md-sys-color-inverse-primary);
+  
+  /* Shadow and Scrim */
+  --md-shadow: var(--md-sys-color-shadow);
+  --md-scrim: var(--md-sys-color-scrim);
+  
+  /* State layers */
+  --md-state-hover: var(--md-sys-color-state-hover);
+  --md-state-focus: var(--md-sys-color-state-focus);
+  --md-state-pressed: var(--md-sys-color-state-pressed);
+  --md-state-selected: var(--md-sys-color-state-selected);
+  --md-state-disabled: var(--md-sys-color-state-disabled);
+}
+
+@layer base {
+  html {
+    font-family: 'Roboto', system-ui, sans-serif;
+    background-color: theme('colors.md.background');
+    color: theme('colors.md.on-background');
+  }
+  
+  /* Material Design 3 Base Styles */
+  body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--md-surface);
+    color: var(--md-on-surface);
+    line-height: 1.6;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Typography Scale with improved hierarchy */
+  h1 { 
+    @apply md-display-large;
+    font-weight: 400;
+    letter-spacing: -0.25px;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 { 
+    @apply md-display-medium;
+    font-weight: 400;
+    letter-spacing: 0px;
+    margin-bottom: 1.25rem;
+  }
+
+  h3 { 
+    @apply md-display-small;
+    font-weight: 400;
+    letter-spacing: 0px;
+    margin-bottom: 1rem;
+  }
+
+  h4 { 
+    @apply md-headline-large;
+    font-weight: 400;
+    letter-spacing: 0px;
+    margin-bottom: 0.875rem;
+  }
+
+  h5 { 
+    @apply md-headline-medium;
+    font-weight: 400;
+    letter-spacing: 0px;
+    margin-bottom: 0.75rem;
+  }
+
+  h6 { 
+    @apply md-headline-small;
+    font-weight: 400;
+    letter-spacing: 0px;
+    margin-bottom: 0.625rem;
+  }
+
+  p { 
+    @apply md-body-large;
+    margin-bottom: 1rem;
+    max-width: 65ch;
+  }
+
+  small {
+    @apply md-body-small;
+  }
+
+  strong, b {
+    font-weight: 500;
+  }
+
+  em, i {
+    font-style: italic;
+  }
+
+  code { 
+    font-family: 'Roboto Mono', 'Consolas', 'Monaco', monospace;
+    @apply md-label-medium;
+    background-color: var(--md-surface-container-highest);
+    color: var(--md-on-surface);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--md-primary);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--md-on-surface-variant);
+  }
+
+  a {
+    color: var(--md-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--md-primary-hover);
+    text-decoration: underline;
+  }
+
+  a:focus {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  /* Material Design 3 Elevation and Surface Styles */
+  .md-elevation-0 {
+    box-shadow: none;
+  }
+  
+  .md-elevation-1 {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  }
+  
+  .md-elevation-2 {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  }
+  
+  .md-elevation-3 {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  }
+  
+  .md-elevation-4 {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+  .md-elevation-5 {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Surface Container Styles */
+  .md-surface-tint {
+    position: relative;
+  }
+  
+  .md-surface-tint::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--md-primary);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  
+  .md-surface-container-lowest {
+    background-color: var(--md-surface-container-lowest);
+  }
+  
+  .md-surface-container-low {
+    background-color: var(--md-surface-container-low);
+  }
+  
+  .md-surface-container {
+    background-color: var(--md-surface-container);
+  }
+  
+  .md-surface-container-high {
+    background-color: var(--md-surface-container-high);
+  }
+  
+  .md-surface-container-highest {
+    background-color: var(--md-surface-container-highest);
+  }
+  
+  /* Interactive Surface States */
+  .md-surface-interactive {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .md-surface-interactive:hover .md-surface-tint::before {
+    opacity: 0.08;
+  }
+  
+  .md-surface-interactive:focus .md-surface-tint::before {
+    opacity: 0.12;
+  }
+  
+  .md-surface-interactive:active .md-surface-tint::before {
+    opacity: 0.16;
+  }
+  
+  /* Scrollbar Styling for Material Design 3 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--md-surface-container-low);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--md-outline-variant);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--md-outline);
+  }
+  
+  /* Selection Styling */
+  ::selection {
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+  }
+  
+  ::-moz-selection {
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+  }
+  
+  /* Material Design 3 Animations and Transitions */
+  @keyframes md-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes md-slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes md-slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes md-scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes md-ripple {
+    0% {
+      transform: scale(0);
+      opacity: 0.2;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  /* Animation Classes */
+  .md-animate-fade-in {
+    animation: md-fade-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .md-animate-slide-in-left {
+    animation: md-slide-in-left 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .md-animate-slide-in-right {
+    animation: md-slide-in-right 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  .md-animate-scale-in {
+    animation: md-scale-in 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+  
+  /* Transition Utilities */
+  .md-transition-standard {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .md-transition-emphasized {
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  }
+  
+  .md-transition-decelerated {
+    transition: all 0.4s cubic-bezier(0, 0, 0.2, 1);
+  }
+  
+  .md-transition-accelerated {
+    transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
+  }
+  
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* Focus Management */
+  .md-focus-ring {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  /* Hide focus ring for mouse users */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+  
+  /* Page Transition Effects */
+  .page-enter {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  
+  .page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .page-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .page-exit-active {
+    opacity: 0;
+    transform: translateY(-16px);
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 1, 1),
+                transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+  }
+}
+
+@layer components {
+  /* Material Design 3 Button Components */
+  .md-btn {
+    @apply inline-flex items-center justify-center px-6 py-2.5 rounded-full font-label text-label-large transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .md-btn-filled {
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+    @apply md-btn hover:shadow-elevation-1;
+  }
+  
+  .md-btn-outlined {
+    border: 1px solid var(--md-outline);
+    color: var(--md-primary);
+    @apply md-btn;
+  }
+  
+  .md-btn-outlined:hover {
+    background-color: color-mix(in srgb, var(--md-primary) 8%, transparent);
+  }
+  
+  .md-btn-text {
+    color: var(--md-primary);
+    @apply md-btn;
+  }
+  
+  .md-btn-text:hover {
+    background-color: color-mix(in srgb, var(--md-primary) 8%, transparent);
+  }
+  
+  .md-btn-tonal {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+    @apply md-btn hover:shadow-elevation-1;
+  }
+  
+  /* Material Design 3 Card Components */
+  .md-card {
+    background-color: var(--md-surface);
+    border: 1px solid var(--md-outline-variant);
+    @apply rounded-xl;
+  }
+  
+  .md-card-elevated {
+    background-color: var(--md-surface);
+    @apply rounded-xl shadow-elevation-1;
+  }
+  
+  .md-card-filled {
+    background-color: var(--md-surface-container-highest);
+    @apply rounded-xl;
+  }
+  
+  .md-card-outlined {
+    background-color: var(--md-surface);
+    border: 1px solid var(--md-outline);
+    @apply rounded-xl;
+  }
+  
+  /* Material Design 3 Navigation */
+  .md-nav-rail {
+    background-color: var(--md-surface);
+    border-right: 1px solid var(--md-outline-variant);
+  }
+  
+  .md-nav-item {
+    color: var(--md-on-surface);
+    @apply flex items-center px-4 py-3 rounded-lg transition-colors duration-200;
+  }
+  
+  .md-nav-item:hover {
+    background-color: color-mix(in srgb, var(--md-primary) 8%, transparent);
+  }
+  
+  .md-nav-item.active {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+  }
+  
+  /* Material Design 3 Typography */
+  .md-display-large {
+    color: var(--md-on-surface);
+    @apply font-display text-display-large;
+  }
+  
+  .md-display-medium {
+    color: var(--md-on-surface);
+    @apply font-display text-display-medium;
+  }
+  
+  .md-display-small {
+    color: var(--md-on-surface);
+    @apply font-display text-display-small;
+  }
+  
+  .md-headline-large {
+    color: var(--md-on-surface);
+    @apply font-headline text-headline-large;
+  }
+  
+  .md-headline-medium {
+    color: var(--md-on-surface);
+    @apply font-headline text-headline-medium;
+  }
+  
+  .md-headline-small {
+    color: var(--md-on-surface);
+    @apply font-headline text-headline-small;
+  }
+  
+  .md-title-large {
+    color: var(--md-on-surface);
+    @apply font-title text-title-large;
+  }
+  
+  .md-title-medium {
+    color: var(--md-on-surface);
+    @apply font-title text-title-medium;
+  }
+  
+  .md-title-small {
+    color: var(--md-on-surface);
+    @apply font-title text-title-small;
+  }
+  
+  .md-body-large {
+    color: var(--md-on-surface);
+    @apply font-body text-body-large;
+  }
+  
+  .md-body-medium {
+    color: var(--md-on-surface);
+    @apply font-body text-body-medium;
+  }
+  
+  .md-body-small {
+    color: var(--md-on-surface);
+    @apply font-body text-body-small;
+  }
+  
+  .md-label-large {
+    color: var(--md-on-surface);
+    @apply font-label text-label-large;
+  }
+  
+  .md-label-medium {
+    color: var(--md-on-surface);
+    @apply font-label text-label-medium;
+  }
+  
+  .md-label-small {
+    color: var(--md-on-surface);
+    @apply font-label text-label-small;
+  }
+  
+  /* Material Design 3 Surface Containers */
+  .md-surface {
+    background-color: var(--md-surface);
+    color: var(--md-on-surface);
+  }
+  
+  .md-surface-container {
+    background-color: var(--md-surface-container);
+    color: var(--md-on-surface);
+  }
+  
+  .md-surface-container-low {
+    background-color: var(--md-surface-container-low);
+    color: var(--md-on-surface);
+  }
+  
+  .md-surface-container-high {
+    background-color: var(--md-surface-container-high);
+    color: var(--md-on-surface);
+  }
+  
+  .md-surface-container-highest {
+    background-color: var(--md-surface-container-highest);
+    color: var(--md-on-surface);
+  }
+  
+  /* Code styling */
+  .prose-custom {
+    @apply prose prose-gray max-w-none;
+  }
+  
+  .prose-custom code {
+    background-color: var(--md-surface-container);
+    color: var(--md-on-surface);
+    @apply px-1 py-0.5 rounded text-sm;
+  }
+  
+  .prose-custom pre {
+    background-color: var(--md-surface-container-highest);
+    color: var(--md-on-surface);
+    @apply p-4 rounded-xl overflow-x-auto;
+  }
+  
+  .prose-custom pre code {
+    background-color: transparent;
+    color: var(--md-on-surface);
+    @apply p-0;
+  }
+}

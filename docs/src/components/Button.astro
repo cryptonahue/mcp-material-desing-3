@@ -1,0 +1,217 @@
+---
+export interface Props {
+  variant?: 'filled' | 'outlined' | 'text' | 'elevated' | 'tonal';
+  size?: 'small' | 'medium' | 'large';
+  disabled?: boolean;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  id?: string;
+  'aria-label'?: string;
+}
+
+const {
+  variant = 'filled',
+  size = 'medium',
+  disabled = false,
+  href,
+  type = 'button',
+  class: className = '',
+  id,
+  'aria-label': ariaLabel,
+  ...rest
+} = Astro.props;
+
+// Generate button classes based on variant and size
+const getButtonClasses = () => {
+  const baseClasses = 'relative overflow-hidden font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed no-underline inline-flex items-center justify-center';
+  
+  const variantClasses = {
+    filled: 'md-btn-filled',
+    outlined: 'md-btn-outlined',
+    text: 'md-btn-text',
+    elevated: 'md-btn-elevated',
+    tonal: 'md-btn-tonal'
+  };
+  
+  const sizeClasses = {
+    small: 'px-4 py-2 text-sm min-h-[32px]',
+    medium: 'px-6 py-3 text-base min-h-[40px]',
+    large: 'px-8 py-4 text-lg min-h-[48px]'
+  };
+  
+  return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+};
+
+const buttonClasses = getButtonClasses();
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class={buttonClasses}
+  href={href}
+  type={href ? undefined : type}
+  disabled={disabled}
+  id={id}
+  aria-label={ariaLabel}
+  data-md-button
+  {...rest}
+>
+  <span class="relative z-10 flex items-center justify-center gap-2">
+    <slot />
+  </span>
+  <div class="absolute inset-0 rounded-full opacity-0 transition-opacity duration-200" data-ripple></div>
+</Tag>
+
+<script>
+  // Material Design 3 Button with Ripple Effect
+  class MaterialButton {
+    constructor(element) {
+      this.element = element;
+      this.rippleElement = element.querySelector('[data-ripple]');
+      this.init();
+    }
+
+    init() {
+      this.setupRippleEffect();
+      this.setupHoverEffects();
+      this.setupFocusEffects();
+    }
+
+    setupRippleEffect() {
+      this.element.addEventListener('click', (e) => {
+        if (this.element.disabled) return;
+        
+        this.createRipple(e);
+      });
+    }
+
+    createRipple(event) {
+      const rect = this.element.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
+      
+      // Create ripple element
+      const ripple = document.createElement('div');
+      ripple.className = 'absolute rounded-full bg-current opacity-20 pointer-events-none';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.style.transform = 'scale(0)';
+      ripple.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
+      
+      // Add ripple to container
+      this.rippleElement.appendChild(ripple);
+      
+      // Trigger animation
+      requestAnimationFrame(() => {
+        ripple.style.transform = 'scale(2)';
+        ripple.style.opacity = '0';
+      });
+      
+      // Remove ripple after animation
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 600);
+    }
+
+    setupHoverEffects() {
+      this.element.addEventListener('mouseenter', () => {
+        if (this.element.disabled) return;
+        
+        this.rippleElement.style.opacity = '0.08';
+        this.rippleElement.style.backgroundColor = 'currentColor';
+      });
+      
+      this.element.addEventListener('mouseleave', () => {
+        this.rippleElement.style.opacity = '0';
+      });
+    }
+
+    setupFocusEffects() {
+      this.element.addEventListener('focus', () => {
+        if (this.element.disabled) return;
+        
+        this.rippleElement.style.opacity = '0.12';
+        this.rippleElement.style.backgroundColor = 'currentColor';
+      });
+      
+      this.element.addEventListener('blur', () => {
+        this.rippleElement.style.opacity = '0';
+      });
+    }
+  }
+
+  // Initialize all Material Design buttons
+  function initMaterialButtons() {
+    const buttons = document.querySelectorAll('[data-md-button]');
+    buttons.forEach(button => {
+      if (!button._materialButton) {
+        button._materialButton = new MaterialButton(button);
+      }
+    });
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMaterialButtons);
+  } else {
+    initMaterialButtons();
+  }
+
+  // Re-initialize when new content is added (for dynamic content)
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === 1) { // Element node
+          const buttons = node.querySelectorAll ? node.querySelectorAll('[data-md-button]') : [];
+          buttons.forEach(button => {
+            if (!button._materialButton) {
+              button._materialButton = new MaterialButton(button);
+            }
+          });
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+</script>
+
+<style>
+  /* Enhanced button styles for Material Design 3 */
+  [data-md-button] {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none !important;
+  }
+  
+  [data-md-button]:hover,
+  [data-md-button]:focus,
+  [data-md-button]:active,
+  [data-md-button]:visited {
+    text-decoration: none !important;
+  }
+  
+  [data-md-button]:active {
+    transform: scale(0.98);
+  }
+  
+  [data-md-button]:disabled {
+    transform: none !important;
+  }
+  
+  /* Focus ring styles */
+  [data-md-button]:focus-visible {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 2px;
+  }
+</style>

@@ -1,0 +1,252 @@
+---
+// Improved Material Design 3 Tabs using MCP Generator
+export interface Props {
+  tabs?: Array<{
+    label: string;
+    content: string;
+    active?: boolean;
+    disabled?: boolean;
+    icon?: string;
+  }>;
+  variant?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
+  fullWidth?: boolean;
+}
+
+const {
+  tabs = [
+    { label: 'Tab 1', content: 'Content 1', active: true },
+    { label: 'Tab 2', content: 'Content 2', active: false },
+    { label: 'Tab 3', content: 'Content 3', active: false }
+  ],
+  variant = 'primary',
+  size = 'medium',
+  fullWidth = false
+} = Astro.props;
+---
+
+<div id="tabs-cd0epcmmd" class="md-tabs md-tabs--primary md-tabs--medium" role="tablist" aria-orientation="horizontal" >
+  <div class="md-tabs__header">
+    
+    <button class="md-tab md-tab--active" 
+            id="tabs-cd0epcmmd-tab-0"
+            role="tab"
+            aria-selected="true"
+            aria-controls="tabs-cd0epcmmd-panel-0"
+            tabindex="0"
+            
+            >
+      <span class="material-icons">tab</span>
+      <span class="md-tab__label">Pestaña 1</span>
+      <div class="md-tab__indicator"></div>
+    </button>
+    <button class="md-tab" 
+            id="tabs-cd0epcmmd-tab-1"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tabs-cd0epcmmd-panel-1"
+            tabindex="-1"
+            
+            >
+      <span class="material-icons">tab</span>
+      <span class="md-tab__label">Pestaña 2</span>
+      <div class="md-tab__indicator"></div>
+    </button>
+    <button class="md-tab" 
+            id="tabs-cd0epcmmd-tab-2"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tabs-cd0epcmmd-panel-2"
+            tabindex="-1"
+            
+            >
+      <span class="material-icons">tab</span>
+      <span class="md-tab__label">Pestaña 3</span>
+      <div class="md-tab__indicator"></div>
+    </button>
+  </div>
+  <div class="md-tabs__content">
+    
+    <div class="md-tab-panel md-tab-panel--active" 
+         id="tabs-cd0epcmmd-panel-0"
+         role="tabpanel"
+         aria-labelledby="tabs-cd0epcmmd-tab-0"
+         >
+      Contenido 1
+    </div>
+    <div class="md-tab-panel" 
+         id="tabs-cd0epcmmd-panel-1"
+         role="tabpanel"
+         aria-labelledby="tabs-cd0epcmmd-tab-1"
+         >
+      Contenido 2
+    </div>
+    <div class="md-tab-panel" 
+         id="tabs-cd0epcmmd-panel-2"
+         role="tabpanel"
+         aria-labelledby="tabs-cd0epcmmd-tab-2"
+         >
+      Contenido 3
+    </div>
+  </div>
+</div>
+
+<style>
+/* Material Design 3 Tabs */
+.md-tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.md-tabs__header {
+  display: flex;
+  border-bottom: 1px solid var(--md-sys-color-outline, #79747e);
+  background: var(--md-sys-color-surface, #fffbfe);
+}
+
+.md-tabs--full-width .md-tabs__header {
+  width: 100%;
+}
+
+.md-tabs--full-width .md-tab {
+  flex: 1;
+}
+
+/* Tab buttons */
+.md-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border: none;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  position: relative;
+  transition: all 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+  outline: none;
+  min-height: 48px;
+}
+
+.md-tab:hover:not(.md-tab--disabled) {
+  background: var(--md-sys-color-surface-variant, #e7e0ec);
+  color: var(--md-sys-color-on-surface, #1c1b1f);
+}
+
+.md-tab:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary, #6750a4);
+  outline-offset: -2px;
+}
+
+.md-tab--active {
+  color: var(--md-sys-color-primary, #6750a4);
+}
+
+.md-tab--disabled {
+  color: var(--md-sys-color-on-surface, #1c1b1f);
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.md-tab__label {
+  white-space: nowrap;
+}
+
+/* Tab indicator */
+.md-tab__indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--md-sys-color-primary, #6750a4);
+  transform: scaleX(0);
+  transition: transform 200ms cubic-bezier(0.2, 0.0, 0, 1.0);
+}
+
+.md-tab--active .md-tab__indicator {
+  transform: scaleX(1);
+}
+
+/* Size variants */
+.md-tabs--small .md-tab {
+  padding: 10px 16px;
+  font-size: 12px;
+  min-height: 40px;
+}
+
+.md-tabs--large .md-tab {
+  padding: 18px 32px;
+  font-size: 16px;
+  min-height: 56px;
+}
+
+/* Tab content */
+.md-tabs__content {
+  position: relative;
+  flex: 1;
+}
+
+.md-tab-panel {
+  padding: 24px;
+  display: none;
+}
+
+.md-tab-panel--active {
+  display: block;
+}
+
+/* Secondary variant */
+.md-tabs--secondary {
+  background: var(--md-sys-color-surface-variant, #e7e0ec);
+}
+
+.md-tabs--secondary .md-tabs__header {
+  background: transparent;
+  border-bottom: none;
+}
+
+.md-tabs--secondary .md-tab {
+  background: var(--md-sys-color-surface, #fffbfe);
+  border-radius: 8px 8px 0 0;
+  margin-right: 2px;
+}
+
+.md-tabs--secondary .md-tab--active {
+  background: var(--md-sys-color-surface, #fffbfe);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.md-tabs--secondary .md-tab__indicator {
+  display: none;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .md-tabs__header {
+  border-color: var(--md-sys-color-outline, #79747e);
+  background: var(--md-sys-color-surface, #fffbfe);
+}
+
+[data-theme="dark"] .md-tab {
+  color: var(--md-sys-color-on-surface-variant, #49454f);
+}
+
+[data-theme="dark"] .md-tab:hover:not(.md-tab--disabled) {
+  background: var(--md-sys-color-surface-variant, #e7e0ec);
+  color: var(--md-sys-color-on-surface, #1c1b1f);
+}
+
+[data-theme="dark"] .md-tab--active {
+  color: var(--md-sys-color-primary, #6750a4);
+}
+</style>
+
+<script>
+
+</script>

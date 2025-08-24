@@ -1,0 +1,201 @@
+---
+export interface Props {
+  variant?: 'elevated' | 'filled' | 'outlined';
+  interactive?: boolean;
+  href?: string;
+  class?: string;
+  id?: string;
+  'aria-label'?: string;
+}
+
+const {
+  variant = 'elevated',
+  interactive = false,
+  href,
+  class: className = '',
+  id,
+  'aria-label': ariaLabel,
+  ...rest
+} = Astro.props;
+
+// Generate card classes based on variant
+const getCardClasses = () => {
+  const baseClasses = 'relative overflow-hidden rounded-xl transition-all duration-300 ease-out';
+  
+  const variantClasses = {
+    elevated: 'md-card-elevated',
+    filled: 'md-card-filled', 
+    outlined: 'md-card-outlined'
+  };
+  
+  const interactiveClasses = interactive ? 'cursor-pointer hover:shadow-lg transform hover:-translate-y-1' : '';
+  
+  return `${baseClasses} ${variantClasses[variant]} ${interactiveClasses} ${className}`;
+};
+
+const cardClasses = getCardClasses();
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  class={cardClasses}
+  href={href}
+  id={id}
+  aria-label={ariaLabel}
+  data-md-card
+  data-interactive={interactive}
+  {...rest}
+>
+  <div class="relative z-10">
+    <slot />
+  </div>
+  {interactive && (
+    <div class="absolute inset-0 rounded-xl opacity-0 transition-opacity duration-200" data-card-overlay></div>
+  )}
+</Tag>
+
+<script>
+  // Material Design 3 Interactive Card
+  class MaterialCard {
+    constructor(element) {
+      this.element = element;
+      this.overlay = element.querySelector('[data-card-overlay]');
+      this.isInteractive = element.dataset.interactive === 'true';
+      
+      if (this.isInteractive) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.setupHoverEffects();
+      this.setupFocusEffects();
+      this.setupClickEffects();
+      this.setupKeyboardNavigation();
+    }
+
+    setupHoverEffects() {
+      this.element.addEventListener('mouseenter', () => {
+        this.showOverlay(0.08);
+        this.element.style.transform = 'translateY(-4px)';
+      });
+      
+      this.element.addEventListener('mouseleave', () => {
+        this.hideOverlay();
+        this.element.style.transform = 'translateY(0)';
+      });
+    }
+
+    setupFocusEffects() {
+      this.element.addEventListener('focus', () => {
+        this.showOverlay(0.12);
+        this.element.style.outline = '2px solid var(--md-primary)';
+        this.element.style.outlineOffset = '2px';
+      });
+      
+      this.element.addEventListener('blur', () => {
+        this.hideOverlay();
+        this.element.style.outline = 'none';
+      });
+    }
+
+    setupClickEffects() {
+      this.element.addEventListener('mousedown', () => {
+        this.showOverlay(0.16);
+        this.element.style.transform = 'translateY(-2px) scale(0.98)';
+      });
+      
+      this.element.addEventListener('mouseup', () => {
+        this.showOverlay(0.08);
+        this.element.style.transform = 'translateY(-4px) scale(1)';
+      });
+    }
+
+    setupKeyboardNavigation() {
+      this.element.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.element.click();
+        }
+      });
+    }
+
+    showOverlay(opacity) {
+      if (this.overlay) {
+        this.overlay.style.opacity = opacity.toString();
+        this.overlay.style.backgroundColor = 'var(--md-on-surface)';
+      }
+    }
+
+    hideOverlay() {
+      if (this.overlay) {
+        this.overlay.style.opacity = '0';
+      }
+    }
+  }
+
+  // Initialize all Material Design cards
+  function initMaterialCards() {
+    const cards = document.querySelectorAll('[data-md-card]');
+    cards.forEach(card => {
+      if (!card._materialCard) {
+        card._materialCard = new MaterialCard(card);
+      }
+    });
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMaterialCards);
+  } else {
+    initMaterialCards();
+  }
+
+  // Re-initialize when new content is added
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === 1) {
+          const cards = node.querySelectorAll ? node.querySelectorAll('[data-md-card]') : [];
+          cards.forEach(card => {
+            if (!card._materialCard) {
+              card._materialCard = new MaterialCard(card);
+            }
+          });
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+</script>
+
+<style>
+  /* Enhanced card styles for Material Design 3 */
+  [data-md-card] {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  [data-md-card][data-interactive="true"] {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  [data-md-card][data-interactive="true"]:hover {
+    box-shadow: var(--md-elevation-3);
+  }
+  
+  [data-md-card][data-interactive="true"]:active {
+    box-shadow: var(--md-elevation-1);
+  }
+  
+  /* Focus styles */
+  [data-md-card]:focus-visible {
+    outline: 2px solid var(--md-primary) !important;
+    outline-offset: 2px !important;
+  }
+</style>

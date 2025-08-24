@@ -1,0 +1,276 @@
+---
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'surface';
+  size?: 'small' | 'medium' | 'large';
+  extended?: boolean;
+  href?: string;
+  class?: string;
+  id?: string;
+  'aria-label'?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'medium',
+  extended = false,
+  href,
+  class: className = '',
+  id,
+  'aria-label': ariaLabel,
+  ...rest
+} = Astro.props;
+
+// Generate FAB classes based on variant and size
+const getFABClasses = () => {
+  const baseClasses = 'fixed bottom-6 right-6 rounded-full shadow-lg transition-all duration-300 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 z-50';
+  
+  const variantClasses = {
+    primary: 'bg-md-primary text-md-on-primary hover:bg-md-primary-hover focus:ring-md-primary',
+    secondary: 'bg-md-secondary-container text-md-on-secondary-container hover:bg-md-secondary-container-hover focus:ring-md-secondary',
+    tertiary: 'bg-md-tertiary-container text-md-on-tertiary-container hover:bg-md-tertiary-container-hover focus:ring-md-tertiary',
+    surface: 'bg-md-surface-container-high text-md-primary hover:bg-md-surface-container-highest focus:ring-md-primary'
+  };
+  
+  const sizeClasses = {
+    small: extended ? 'h-10 px-4' : 'w-10 h-10',
+    medium: extended ? 'h-14 px-6' : 'w-14 h-14',
+    large: extended ? 'h-16 px-8' : 'w-16 h-16'
+  };
+  
+  return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+};
+
+const fabClasses = getFABClasses();
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class={fabClasses}
+  href={href}
+  type={href ? undefined : 'button'}
+  id={id}
+  aria-label={ariaLabel}
+  data-md-fab
+  data-variant={variant}
+  data-size={size}
+  data-extended={extended}
+  {...rest}
+>
+  <div class="flex items-center justify-center gap-2 relative z-10">
+    <slot name="icon" />
+    {extended && (
+      <span class="font-medium whitespace-nowrap">
+        <slot />
+      </span>
+    )}
+  </div>
+  <div class="absolute inset-0 rounded-full opacity-0 transition-opacity duration-200" data-fab-ripple></div>
+</Tag>
+
+<script>
+  // Material Design 3 Floating Action Button
+  class MaterialFAB {
+    constructor(element) {
+      this.element = element;
+      this.rippleElement = element.querySelector('[data-fab-ripple]');
+      this.isExtended = element.dataset.extended === 'true';
+      this.isVisible = true;
+      
+      this.init();
+    }
+
+    init() {
+      this.setupRippleEffect();
+      this.setupHoverEffects();
+      this.setupFocusEffects();
+      this.setupScrollBehavior();
+      this.setupAnimations();
+    }
+
+    setupRippleEffect() {
+      this.element.addEventListener('click', (e) => {
+        this.createRipple(e);
+      });
+    }
+
+    createRipple(event) {
+      const rect = this.element.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
+      
+      // Create ripple element
+      const ripple = document.createElement('div');
+      ripple.className = 'absolute rounded-full bg-current opacity-20 pointer-events-none';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.style.transform = 'scale(0)';
+      ripple.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
+      
+      // Add ripple to container
+      this.rippleElement.appendChild(ripple);
+      
+      // Trigger animation
+      requestAnimationFrame(() => {
+        ripple.style.transform = 'scale(2)';
+        ripple.style.opacity = '0';
+      });
+      
+      // Remove ripple after animation
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 600);
+    }
+
+    setupHoverEffects() {
+      this.element.addEventListener('mouseenter', () => {
+        this.rippleElement.style.opacity = '0.08';
+        this.rippleElement.style.backgroundColor = 'currentColor';
+        this.element.style.transform = 'scale(1.05)';
+      });
+      
+      this.element.addEventListener('mouseleave', () => {
+        this.rippleElement.style.opacity = '0';
+        this.element.style.transform = 'scale(1)';
+      });
+    }
+
+    setupFocusEffects() {
+      this.element.addEventListener('focus', () => {
+        this.rippleElement.style.opacity = '0.12';
+        this.rippleElement.style.backgroundColor = 'currentColor';
+      });
+      
+      this.element.addEventListener('blur', () => {
+        this.rippleElement.style.opacity = '0';
+      });
+    }
+
+    setupScrollBehavior() {
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+      
+      const updateFABVisibility = () => {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrolling down - hide FAB
+          this.hideFAB();
+        } else {
+          // Scrolling up - show FAB
+          this.showFAB();
+        }
+        
+        lastScrollY = currentScrollY;
+        ticking = false;
+      };
+      
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(updateFABVisibility);
+          ticking = true;
+        }
+      });
+    }
+
+    setupAnimations() {
+      // Initial entrance animation
+      this.element.style.transform = 'scale(0) rotate(45deg)';
+      this.element.style.opacity = '0';
+      
+      setTimeout(() => {
+        this.element.style.transform = 'scale(1) rotate(0deg)';
+        this.element.style.opacity = '1';
+      }, 300);
+    }
+
+    showFAB() {
+      if (!this.isVisible) {
+        this.isVisible = true;
+        this.element.style.transform = 'scale(1) translateY(0)';
+        this.element.style.opacity = '1';
+      }
+    }
+
+    hideFAB() {
+      if (this.isVisible) {
+        this.isVisible = false;
+        this.element.style.transform = 'scale(0.8) translateY(20px)';
+        this.element.style.opacity = '0';
+      }
+    }
+  }
+
+  // Initialize all Material Design FABs
+  function initMaterialFABs() {
+    const fabs = document.querySelectorAll('[data-md-fab]');
+    fabs.forEach(fab => {
+      if (!fab._materialFAB) {
+        fab._materialFAB = new MaterialFAB(fab);
+      }
+    });
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMaterialFABs);
+  } else {
+    initMaterialFABs();
+  }
+
+  // Re-initialize when new content is added
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === 1) {
+          const fabs = node.querySelectorAll ? node.querySelectorAll('[data-md-fab]') : [];
+          fabs.forEach(fab => {
+            if (!fab._materialFAB) {
+              fab._materialFAB = new MaterialFAB(fab);
+            }
+          });
+        }
+      });
+    });
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+</script>
+
+<style>
+  /* Enhanced FAB styles for Material Design 3 */
+  [data-md-fab] {
+    position: fixed;
+    overflow: hidden;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  [data-md-fab]:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  [data-md-fab]:active {
+    transform: scale(0.95);
+  }
+  
+  /* Focus ring styles */
+  [data-md-fab]:focus-visible {
+    outline: 2px solid var(--md-primary);
+    outline-offset: 2px;
+  }
+  
+  /* Extended FAB specific styles */
+  [data-md-fab][data-extended="true"] {
+    border-radius: 16px;
+  }
+</style>

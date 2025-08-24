@@ -1,0 +1,118 @@
+---
+export interface Props {
+  code: string;
+  language?: string;
+  title?: string;
+  showCopy?: boolean;
+}
+
+const { code, language = 'html', title, showCopy = true } = Astro.props;
+const id = `code-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg">
+  {title && (
+    <div class="bg-gray-800 px-4 py-2 border-b border-gray-700">
+      <div class="flex items-center justify-between">
+        <h3 class="text-sm font-medium text-gray-200">{title}</h3>
+        {showCopy && (
+          <button 
+            class="copy-btn text-gray-400 hover:text-white transition-colors p-1 rounded"
+            data-code={code}
+            title="Copiar código"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </button>
+        )}
+      </div>
+    </div>
+  )}
+  
+  <div class="relative">
+    <pre class="p-4 overflow-x-auto text-sm"><code class={`language-${language} text-gray-100`} id={id}>{code}</code></pre>
+    
+    {!title && showCopy && (
+      <button 
+        class="copy-btn absolute top-2 right-2 text-gray-400 hover:text-white transition-colors p-2 rounded bg-gray-800 bg-opacity-50 hover:bg-opacity-75"
+        data-code={code}
+        title="Copiar código"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+        </svg>
+      </button>
+    )}
+  </div>
+</div>
+
+<script>
+  // Funcionalidad de copiar código
+  document.addEventListener('DOMContentLoaded', function() {
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    copyButtons.forEach(button => {
+      button.addEventListener('click', async function() {
+        const code = this.getAttribute('data-code');
+        
+        try {
+          await navigator.clipboard.writeText(code);
+          
+          // Feedback visual
+          const originalContent = this.innerHTML;
+          this.innerHTML = `
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          `;
+          
+          setTimeout(() => {
+            this.innerHTML = originalContent;
+          }, 2000);
+        } catch (err) {
+          console.error('Error al copiar:', err);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  pre {
+    background: #1a1a1a;
+  }
+  
+  code {
+    font-family: 'Fira Code', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+  }
+  
+  /* Estilos básicos de sintaxis */
+  .language-html .token.tag {
+    color: #e06c75;
+  }
+  
+  .language-html .token.attr-name {
+    color: #d19a66;
+  }
+  
+  .language-html .token.attr-value {
+    color: #98c379;
+  }
+  
+  .language-typescript .token.keyword {
+    color: #c678dd;
+  }
+  
+  .language-typescript .token.string {
+    color: #98c379;
+  }
+  
+  .language-css .token.property {
+    color: #61afef;
+  }
+  
+  .language-css .token.string {
+    color: #98c379;
+  }
+</style>

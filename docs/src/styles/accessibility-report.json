@@ -1,0 +1,200 @@
+{
+  "metadata": {
+    "generatedAt": "2025-08-20T22:05:12.233Z",
+    "seedColor": "#6750A4",
+    "darkMode": true,
+    "wcagVersion": "2.1",
+    "methodology": "HCT + Scientific Validation"
+  },
+  "overallRating": "AA",
+  "summary": {
+    "totalCombinations": 5,
+    "aaaCompliant": 2,
+    "aaCompliant": 3,
+    "failures": 0,
+    "specificValidations": 5,
+    "accessibleValidations": 5
+  },
+  "mainCombinations": [
+    {
+      "name": "Primary/OnPrimary",
+      "foreground": 100,
+      "background": 40,
+      "validation": {
+        "ratio": 6.46,
+        "passes": {
+          "AA_normal": true,
+          "AA_large": true,
+          "AAA_normal": false,
+          "AAA_large": true
+        },
+        "level": "AA"
+      }
+    },
+    {
+      "name": "Secondary/OnSecondary",
+      "foreground": 100,
+      "background": 40,
+      "validation": {
+        "ratio": 6.46,
+        "passes": {
+          "AA_normal": true,
+          "AA_large": true,
+          "AAA_normal": false,
+          "AAA_large": true
+        },
+        "level": "AA"
+      }
+    },
+    {
+      "name": "Surface/OnSurface",
+      "foreground": 10,
+      "background": 98,
+      "validation": {
+        "ratio": 16.31,
+        "passes": {
+          "AA_normal": true,
+          "AA_large": true,
+          "AAA_normal": true,
+          "AAA_large": true
+        },
+        "level": "AAA"
+      }
+    },
+    {
+      "name": "Background/OnBackground",
+      "foreground": 10,
+      "background": 99,
+      "validation": {
+        "ratio": 16.72,
+        "passes": {
+          "AA_normal": true,
+          "AA_large": true,
+          "AAA_normal": true,
+          "AAA_large": true
+        },
+        "level": "AAA"
+      }
+    },
+    {
+      "name": "Error/OnError",
+      "foreground": 100,
+      "background": 40,
+      "validation": {
+        "ratio": 6.46,
+        "passes": {
+          "AA_normal": true,
+          "AA_large": true,
+          "AAA_normal": false,
+          "AAA_large": true
+        },
+        "level": "AA"
+      }
+    }
+  ],
+  "specificValidations": [
+    {
+      "name": "Botón Primario",
+      "foreground": 100,
+      "background": 40,
+      "context": "Botón principal de acción",
+      "ratio": 6.46,
+      "passes": {
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "AAA_large": true
+      },
+      "level": "AA",
+      "accessible": true,
+      "improvements": null
+    },
+    {
+      "name": "Texto en Superficie",
+      "foreground": 10,
+      "background": 98,
+      "context": "Texto principal en tarjetas",
+      "ratio": 16.31,
+      "passes": {
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "AAA_large": true
+      },
+      "level": "AAA",
+      "accessible": true,
+      "improvements": null
+    },
+    {
+      "name": "Texto Secundario",
+      "foreground": 30,
+      "background": 98,
+      "context": "Texto de apoyo y descripciones",
+      "ratio": 8.89,
+      "passes": {
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": true,
+        "AAA_large": true
+      },
+      "level": "AAA",
+      "accessible": true,
+      "improvements": null
+    },
+    {
+      "name": "Enlaces",
+      "foreground": 40,
+      "background": 99,
+      "context": "Enlaces y elementos interactivos",
+      "ratio": 6.3,
+      "passes": {
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "AAA_large": true
+      },
+      "level": "AA",
+      "accessible": true,
+      "improvements": null
+    },
+    {
+      "name": "Estados de Error",
+      "foreground": 100,
+      "background": 40,
+      "context": "Mensajes de error críticos",
+      "ratio": 6.46,
+      "passes": {
+        "AA_normal": true,
+        "AA_large": true,
+        "AAA_normal": false,
+        "AAA_large": true
+      },
+      "level": "AA",
+      "accessible": true,
+      "improvements": null
+    }
+  ],
+  "recommendations": [
+    "All combinations pass WCAG AA. Consider improving to AAA for enhanced accessibility."
+  ],
+  "colorScheme": {
+    "primary": 40,
+    "onPrimary": 100,
+    "secondary": 40,
+    "onSecondary": 100,
+    "surface": 98,
+    "onSurface": 10,
+    "background": 99,
+    "onBackground": 10,
+    "error": 40,
+    "onError": 100
+  },
+  "theme": {
+    "primary": {},
+    "secondary": {},
+    "tertiary": {},
+    "neutral": {},
+    "surface": {},
+    "background": {}
+  }
+}
